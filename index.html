@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game World - Plataforma de juegos y entretenimiento online. Proyecto educativo sobre protección de datos personales.">
+    <meta name="author" content="Equipo Game World">
+    <title>Game World | Inicio</title>
+    <!-- TODO (Equipo): vincular aquí la hoja de estilos principal styles.css -->
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+</head>
+<body>
+
+    <!-- ============================================================
+         HEADER: barra superior fija con logo, navegación y accesos
+         ============================================================ -->
+    <header class="site-header">
+        <!-- TODO (Diseño): reemplazar este texto por el logo SVG definitivo -->
+        <a href="index.html" class="logo" aria-label="Ir al inicio de Game World">
+            <span class="logo-icon">🎮</span>
+            <span class="logo-text">Game World</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navegación principal">
+            <!-- TODO (Equipo): agregar aquí los enlaces a secciones internas cuando existan -->
+            <ul>
+                <li><a href="#carousel">Promociones</a></li>
+                <li><a href="#ruleta">Ruleta</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-actions">
+            <!-- TODO (Front): conectar estos botones con login.html y register.html -->
+            <a href="login.html" class="btn btn-secondary">Iniciar sesión</a>
+            <a href="register.html" class="btn btn-primary">Registrate</a>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         CONTENIDO PRINCIPAL
+         ============================================================ -->
+    <main>
+
+        <!-- ------------------------------------------------------------
+             SECCIÓN 1: Carrusel promocional
+             ------------------------------------------------------------ -->
+        <section id="carousel" class="carousel-section" aria-label="Promociones destacadas">
+            <!-- TODO (Front): implementar carrusel con JS o librería (Swiper, Glide.js).
+                 Por ahora dejamos la estructura de slides. -->
+            <div class="carousel-container">
+                <article class="carousel-slide">
+                    <!-- TODO (Contenido): imagen promocional 1 -->
+                    <p>[PLACEHOLDER: Slide 1 - Promoción de bienvenida para nuevos usuarios]</p>
+                </article>
+                <article class="carousel-slide">
+                    <!-- TODO (Contenido): imagen promocional 2 -->
+                    <p>[PLACEHOLDER: Slide 2 - Juego destacado de la semana]</p>
+                </article>
+                <article class="carousel-slide">
+                    <!-- TODO (Contenido): imagen promocional 3 -->
+                    <p>[PLACEHOLDER: Slide 3 - Torneo o evento especial]</p>
+                </article>
+            </div>
+            <!-- TODO (Front): botones de navegación del carrusel (prev/next) -->
+        </section>
+
+        <!-- ------------------------------------------------------------
+             SECCIÓN 2: Ruleta interactiva + mascota
+             ------------------------------------------------------------ -->
+        <section id="ruleta" class="ruleta-section" aria-label="Ruleta de premios">
+            <div class="ruleta-wrapper">
+                <!-- TODO (Front): dibujar la ruleta con Canvas o SVG -->
+                <div class="ruleta" role="img" aria-label="Ruleta de premios giratoria">
+                    [PLACEHOLDER: Ruleta - se animará al presionar el botón]
+                </div>
+            </div>
+
+            <div class="ruleta-side">
+                <!-- TODO (Diseño): reemplazar por un GIF o imagen animada del gato bailando -->
+                <div class="mascota" aria-hidden="true">
+                    [PLACEHOLDER: Gato bailando al lado de la ruleta]
+                </div>
+
+                <!-- TODO (Front): agregar evento JS que dispare el giro de la ruleta -->
+                <button type="button" class="btn btn-ruleta" id="btn-girar">
+                    🎯 Girar la ruleta
+                </button>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------
+             SECCIÓN 3: Formulario de contacto / recolección de datos
+             ------------------------------------------------------------ -->
+        <section id="contacto" class="contacto-section" aria-label="Formulario de contacto">
+            <h2>Dejanos tus datos</h2>
+            <p class="form-notice">
+                <!-- TODO (Legal): revisar el texto de aviso legal con el equipo de investigación.
+                     Este formulario es parte de la simulación del TP. -->
+                [PLACEHOLDER: Aviso legal sobre tratamiento de datos personales]
+            </p>
+
+            <form action="#" method="post" class="contact-form">
+                <fieldset>
+                    <legend>Información de contacto</legend>
+
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required
+                           placeholder="Ej: Juan Pérez"
+                           autocomplete="name">
+
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required
+                           placeholder="ejemplo@correo.com"
+                           autocomplete="email">
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"
+                              placeholder="Escribí tu consulta o comentario..."></textarea>
+
+                    <!-- TODO (Legal): definir si el checkbox de consentimiento es obligatorio
+                         según la Ley 25.326. Por ahora queda como placeholder. -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="consentimiento" name="consentimiento" required>
+                        Acepto el tratamiento de mis datos personales.
+                    </label>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <!-- TODO (Equipo): definir contenido del footer.
+             Ideas: enlaces a redes, aviso legal, política de privacidad,
+             créditos del equipo, año de creación. -->
+        <p>[PLACEHOLDER: Contenido del footer - a definir por el equipo]</p>
+        <p>&copy; 2026 Game World - Proyecto educativo</p>
+    </footer>
+
+    <!-- TODO (Front): vincular aquí el archivo JS principal -->
+    <!-- <script src="js/main.js"></script> -->
+</body>
+</html>
