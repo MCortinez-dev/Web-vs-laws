@@ -43,26 +43,60 @@
     <main>
 
         <!-- ------------------------------------------------------------
-             SECCIÓN 1: Carrusel promocional
-             ------------------------------------------------------------ -->
+            SECCIÓN 1: Carrusel promocional
+            Cada slide contiene una imagen de fondo y un texto encima.
+            Las imágenes se guardan en assets/carousel/
+            ------------------------------------------------------------ -->
         <section id="carousel" class="carousel-section" aria-label="Promociones destacadas">
-            <!-- TODO (Front): implementar carrusel con JS o librería (Swiper, Glide.js).
-                 Por ahora dejamos la estructura de slides. -->
             <div class="carousel-container">
+                <!-- Slide 1 -->
                 <article class="carousel-slide">
-                    <!-- TODO (Contenido): imagen promocional 1 -->
-                    <p>[PLACEHOLDER: Slide 1 - Promoción de bienvenida para nuevos usuarios]</p>
+                    <img
+                        src="assets/carousel/slide-01.jpg"
+                        alt="Promoción de bienvenida para nuevos usuarios"
+                        class="carousel-img"
+                        width="1200"
+                        height="600"
+                        loading="eager"
+                    >
+                    <div class="carousel-texto">
+                        <h3>¡Bienvenido a Game World!</h3>
+                        <p>Registrate y obtené 100 monedas de regalo</p>
+                    </div>
                 </article>
+
+                <!-- Slide 2 -->
                 <article class="carousel-slide">
-                    <!-- TODO (Contenido): imagen promocional 2 -->
-                    <p>[PLACEHOLDER: Slide 2 - Juego destacado de la semana]</p>
+                    <img
+                        src="assets/carousel/slide-02.jpg"
+                        alt="Juego destacado de la semana"
+                        class="carousel-img"
+                        width="1200"
+                        height="600"
+                        loading="lazy"
+                    >
+                    <div class="carousel-texto">
+                        <h3>Juego de la semana</h3>
+                        <p>Descubrí la ruleta de premios</p>
+                    </div>
                 </article>
+
+                <!-- Slide 3 -->
                 <article class="carousel-slide">
-                    <!-- TODO (Contenido): imagen promocional 3 -->
-                    <p>[PLACEHOLDER: Slide 3 - Torneo o evento especial]</p>
+                    <img
+                        src="assets/carousel/slide-03.jpg"
+                        alt="Torneo o evento especial"
+                        class="carousel-img"
+                        width="1200"
+                        height="600"
+                        loading="lazy"
+                    >
+                    <div class="carousel-texto">
+                        <h3>Torneo especial</h3>
+                        <p>Participá y ganá premios exclusivos</p>
+                    </div>
                 </article>
             </div>
-            <!-- TODO (Front): botones de navegación del carrusel (prev/next) -->
         </section>
 
         <!-- ------------------------------------------------------------
