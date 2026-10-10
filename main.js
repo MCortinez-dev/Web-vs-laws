@@ -5,8 +5,8 @@
 // y crear la carpeta correspondiente en assets/gato/
 // ============================================================
 
-const VESTIMENTAS = ["base", "buzo", "gorra", "lentes"];
-const TOTAL_FRAMES = 6;
+const VESTIMENTAS = ["ninja"];
+const TOTAL_FRAMES = 3;
 const VELOCIDAD_MS = 150; // 150ms por frame ≈ 6.6 fps
 
 const gatoImg = document.getElementById("gato");
