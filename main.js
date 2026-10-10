@@ -121,3 +121,140 @@ if (contactForm) {
         contactForm.reset();
     });
 }
+
+// ============================================================
+// CARRUSEL AUTOMÁTICO
+// Avanza solo cada 5 segundos. Se pausa cuando:
+//   - el usuario interactúa con el scroll (manual)
+//   - el mouse está encima del carrusel (desktop)
+//   - el usuario tiene "reducir movimiento" activado (accesibilidad)
+// Para agregar más slides: sumar <article class="carousel-slide">
+// al HTML. El JS los detecta automáticamente.
+// ============================================================
+
+const carousel = document.querySelector(".carousel-container");
+const slides = document.querySelectorAll(".carousel-slide");
+
+// Configuración
+const INTERVALO_MS = 5000;       // 5 segundos entre cada avance
+const PAUSA_INTERACCION_MS = 10000; // 10s de pausa si el usuario interactúa
+
+let slideActual = 0;
+let intervaloCarrusel = null;
+let pausaHasta = 0;              // Timestamp hasta cuándo está pausado
+let timeoutReanudar = null;      // Timer para reanudar después de una interacción
+let pausadoPorHover = false;     // Estado de hover
+
+// ------------------------------------------------------------
+// Respeta la preferencia de "reducir movimiento" del sistema.
+// Si está activa, el carrusel NO avanza solo.
+// ------------------------------------------------------------
+const prefiereReducirMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+// ------------------------------------------------------------
+// Ir a un slide específico usando scrollTo (respeta el snap)
+// ------------------------------------------------------------
+function irASlide(indice) {
+    if (!carousel || slides.length === 0) return;
+
+    // Asegurar que el índice esté dentro del rango
+    slideActual = (indice + slides.length) % slides.length;
+
+    const slide = slides[slideActual];
+    carousel.scrollTo({
+        left: slide.offsetLeft - carousel.offsetLeft,
+        behavior: "smooth"
+    });
+}
+
+// ------------------------------------------------------------
+// Avanzar al siguiente slide (o volver al primero)
+// ------------------------------------------------------------
+function siguienteSlide() {
+    irASlide(slideActual + 1);
+}
+
+// ------------------------------------------------------------
+// Pausar el carrusel por un tiempo determinado.
+// Se usa cuando el usuario interactúa manualmente.
+// ------------------------------------------------------------
+function pausarPorInteraccion() {
+    pausaHasta = Date.now() + PAUSA_INTERACCION_MS;
+
+    // Si ya hay un timer de reanudación, cancelarlo
+    if (timeoutReanudar) clearTimeout(timeoutReanudar);
+
+    // Reanudar después del tiempo de pausa
+    timeoutReanudar = setTimeout(() => {
+        pausaHasta = 0;
+    }, PAUSA_INTERACCION_MS);
+}
+
+// ------------------------------------------------------------
+// Arrancar / detener el auto-avance
+// ------------------------------------------------------------
+function arrancarCarrusel() {
+    if (intervaloCarrusel) return;
+    intervaloCarrusel = setInterval(() => {
+        // Si está pausado (por interacción o hover), no avanzar
+        if (Date.now() < pausaHasta) return;
+        if (pausadoPorHover) return;
+        siguienteSlide();
+    }, INTERVALO_MS);
+}
+
+function detenerCarrusel() {
+    if (intervaloCarrusel) {
+        clearInterval(intervaloCarrusel);
+        intervaloCarrusel = null;
+    }
+}
+
+// ------------------------------------------------------------
+// Detectar interacción del usuario con el scroll.
+// Cuando el usuario hace scroll manual, pausamos el auto-avance.
+// ------------------------------------------------------------
+if (carousel) {
+    carousel.addEventListener("scroll", () => {
+        // Solo pausar si fue scroll manual (no el que dispara el propio JS).
+        // Un truco simple: si pasó más de 100ms desde el último scroll,
+        // consideramos que es manual. Si no, es del JS.
+        if (Date.now() - ultimoScrollJS > 150) {
+            pausarPorInteraccion();
+        }
+        ultimoScrollJS = Date.now();
+    }, { passive: true });
+
+    // Pausa al pasar el mouse por encima (desktop)
+    carousel.addEventListener("mouseenter", () => {
+        pausadoPorHover = true;
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+        pausadoPorHover = false;
+    });
+
+    // Pausa al tocar (mobile) — se reactiva cuando el usuario deja de tocar
+    carousel.addEventListener("touchstart", () => {
+        pausadoPorHover = true;
+    }, { passive: true });
+
+    carousel.addEventListener("touchend", () => {
+        pausadoPorHover = false;
+        pausarPorInteraccion(); // Pausa extra después del toque
+    }, { passive: true });
+}
+
+// ------------------------------------------------------------
+// Marca para distinguir scroll del JS vs scroll manual
+// ------------------------------------------------------------
+let ultimoScrollJS = 0;
+
+// ------------------------------------------------------------
+// Arrancar el carrusel si el usuario no prefiere reducir movimiento
+// ------------------------------------------------------------
+if (!prefiereReducirMovimiento && carousel && slides.length > 1) {
+    arrancarCarrusel();
+}
