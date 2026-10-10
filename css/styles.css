@@ -1089,6 +1089,10 @@ section {
     width: 100%;
     height: 300px;
     background-color: var(--color-bg);
+    background-image: url("../assets/juego/fondo-juego.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 2px dashed var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
@@ -1097,8 +1101,18 @@ section {
     justify-content: center;
 }
 
+.juego-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .juego-gato {
     position: absolute;
+    z-index: 2; /* Por encima del overlay */
     width: 60px;
     height: 60px;
     background: none;
@@ -1167,4 +1181,91 @@ section {
     .juego-area {
         height: 250px;
     }
+}
+
+/* ------------------------------------------------------------
+   DESPLEGABLE "CAMBIAR CONTRASEÑA" CON AVISO DEL CASO YAHOO
+   Se abre dentro del panel de usuario. Es un <details> que
+   muestra un aviso educativo sobre el hackeo de Yahoo (2013).
+   ------------------------------------------------------------ */
+.cambio-password {
+    margin: var(--space-md) 0;
+    border: 1px solid var(--color-danger);
+    border-radius: var(--radius);
+    background-color: rgba(239, 68, 68, 0.08);
+    overflow: hidden;
+}
+
+.cambio-password summary {
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-danger);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-base);
+}
+
+/* Ocultar el triángulo nativo */
+.cambio-password summary::marker,
+.cambio-password summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Triángulo custom que rota */
+.cambio-password summary::before {
+    content: "▶";
+    font-size: 0.75em;
+    transition: transform var(--transition);
+    display: inline-block;
+}
+
+.cambio-password[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.cambio-password summary:hover {
+    color: #dc2626;
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.cambio-password-contenido {
+    padding: 0 var(--space-md) var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   AVISO DEL CASO YAHOO
+   Cartel dentro del desplegable. Fondo oscuro, borde rojo,
+   textos que explican el caso.
+   ------------------------------------------------------------ */
+.aviso-yahoo {
+    padding: var(--space-md);
+    background-color: var(--color-bg);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--color-danger);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.aviso-yahoo-titulo {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-danger);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.aviso-yahoo-texto {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.aviso-yahoo-texto strong {
+    color: var(--color-accent);
 }

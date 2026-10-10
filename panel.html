@@ -39,6 +39,34 @@
                 <p class="panel-cargando">Cargando datos...</p>
             </div>
 
+            <!-- Desplegable del caso Yahoo: aparece al hacer clic en "Cambiar contraseña" -->
+            <details class="cambio-password">
+                <summary>🔒 Cambiar contraseña</summary>
+
+                <div class="cambio-password-contenido">
+                    <div class="aviso-yahoo">
+                        <p class="aviso-yahoo-titulo">
+                            ⚠️ Por error de cifrado, Yahoo filtró más de 1.000 millones de cuentas
+                        </p>
+                        <p class="aviso-yahoo-texto">
+                            En 2013, Yahoo sufrió el mayor hackeo de la historia: <strong>3.000 millones
+                            de cuentas</strong> afectadas, incluyendo <strong>7.970.680 argentinos</strong>.
+                            La empresa no había cifrado las copias de seguridad ni aplicado medidas
+                            técnicas adecuadas (Art. 9 Ley 25.326).
+                        </p>
+                        <p class="aviso-yahoo-texto">
+                            Si este sitio fuera real, tu contraseña debería estar almacenada con
+                            <strong>hashing</strong> (bcrypt, Argon2), y el canal debería ser HTTPS.
+                            La AAIP multó a Yahoo por no cumplir con el deber de seguridad.
+                        </p>
+
+                        <a href="yahoo.html" class="btn btn-accent btn-block">
+                            Ver análisis completo del caso Yahoo →
+                        </a>
+                    </div>
+                </div>
+            </details>
+
             <div class="panel-acciones">
                 <!-- Modificar: redirige a register.html (que precarga los datos) -->
                 <a href="register.html" class="btn btn-primary">Modificar datos</a>
