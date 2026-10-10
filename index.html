@@ -66,28 +66,71 @@
         </section>
 
         <!-- ------------------------------------------------------------
-             SECCIÓN 2: Ruleta interactiva + mascota
-             ------------------------------------------------------------ -->
+            SECCIÓN 2: Ruleta interactiva + mascota
+            ------------------------------------------------------------ -->
         <section id="ruleta" class="ruleta-section" aria-label="Ruleta de premios">
             <div class="ruleta-wrapper">
-                <!-- TODO (Front): dibujar la ruleta con Canvas o SVG -->
-                <div class="ruleta" role="img" aria-label="Ruleta de premios giratoria">
-                    [PLACEHOLDER: Ruleta - se animará al presionar el botón]
-                </div>
+                <!-- Imagen de la ruleta. Rota con CSS cuando se presiona el botón. -->
+                <img
+                    id="ruleta"
+                    src="assets/ruleta/ruleta.png"
+                    alt="Ruleta de premios"
+                    width="400"
+                    height="400"
+                    class="ruleta-img"
+                >
+                <!-- Indicador de premio (opcional, se puede sacar si no lo usás) -->
+                <div class="ruleta-indicador" aria-hidden="true">▼</div>
             </div>
 
             <div class="ruleta-side">
-                <!-- TODO (Diseño): reemplazar por un GIF o imagen animada del gato bailando -->
+                <!-- Mascota animada: gato que baila (JS cambia los frames) -->
                 <div class="mascota">
                     <img id="gato" src="assets/gato/ninja/frame_01.png" alt="Gato bailando" width="230" height="230">
                 </div>
 
-                <!-- TODO (Front): agregar evento JS que dispare el giro de la ruleta -->
+                <!-- Botón para disparar el giro -->
                 <button type="button" class="btn btn-ruleta" id="btn-girar">
                     🎯 Girar la ruleta
                 </button>
             </div>
         </section>
+
+        <!-- Modal legal que se abre al terminar el giro -->
+        <dialog id="modal-legal" class="modal-legal">
+            <div class="modal-contenido">
+                <h2>⚠️ Advertencia Legal</h2>
+                <p>
+                    Este sitio simula una plataforma de apuestas con fines educativos.
+                    En Argentina, la actividad está fuertemente regulada para proteger
+                    la salud y los datos de los usuarios.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Publicidad:</strong> La promoción de apuestas está prohibida
+                        en redes sociales y eventos públicos para prevenir la ludopatía
+                        infantil (Proyecto de Ley S-1116/2025).
+                    </li>
+                    <li>
+                        <strong>Identidad:</strong> Los operadores deben verificar identidad
+                        y edad mediante datos biométricos contra el RENAPER.
+                    </li>
+                    <li>
+                        <strong>Datos Sensibles:</strong> Los datos biométricos y financieros
+                        son considerados datos sensibles según la Ley 25.326 y deben ser
+                        protegidos con medidas de seguridad reforzadas.
+                    </li>
+                    <li>
+                        <strong>Juego Responsable:</strong> Toda plataforma debe ofrecer
+                        mecanismos de autoexclusión y límites de carga para prevenir
+                        el juego compulsivo.
+                    </li>
+                </ul>
+                <button type="button" id="cerrar-modal" class="btn btn-primary">
+                    Entendido
+                </button>
+            </div>
+        </dialog>
 
         <!-- ------------------------------------------------------------
              SECCIÓN 3: Formulario de contacto / recolección de datos
