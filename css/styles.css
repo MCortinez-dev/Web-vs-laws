@@ -412,7 +412,8 @@ section {
 
 /* Quita las flechitas del input number en Firefox */
 .contact-form input[type="number"] {
-    -moz-appearance: textfield;
+    appearance: textfield;          /* ← ESTÁNDAR */
+    -moz-appearance: textfield;     /* ← Firefox */
 }
 
 /* ------------------------------------------------------------
