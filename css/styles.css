@@ -528,3 +528,71 @@ section {
     margin-top: var(--space-sm);
     align-self: flex-end;
 }
+
+/* ------------------------------------------------------------
+   CARTEL LEGAL DESPLEGABLE (details/summary)
+   Se usa en el formulario de contacto para explicar por qué
+   pedir ciertos datos es una infracción a la Ley 25.326.
+   ------------------------------------------------------------ */
+.legal-hint {
+    margin: var(--space-sm) 0;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius);
+    background-color: rgba(245, 158, 11, 0.08);
+    overflow: hidden;
+}
+
+.legal-hint summary {
+    padding: var(--space-sm);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-accent);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.legal-hint summary::marker,
+.legal-hint summary::-webkit-details-marker {
+    display: none;
+}
+
+.legal-hint summary::before {
+    content: "▶";
+    font-size: 0.75em;
+    transition: transform var(--transition);
+}
+
+.legal-hint[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.legal-hint-content {
+    padding: 0 var(--space-sm) var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.legal-hint-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-left: var(--space-md);
+    list-style: disc;
+    margin: var(--space-xs) 0;
+}
+
+.legal-hint-content li strong {
+    color: var(--color-secondary);
+}
+
+.legal-hint-footer {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-danger);
+    font-size: var(--font-size-sm);
+}

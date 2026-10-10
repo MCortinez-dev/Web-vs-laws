@@ -102,9 +102,8 @@
         <section id="contacto" class="contacto-section" aria-label="Formulario de contacto">
             <h2>Dejanos tus datos</h2>
             <p class="form-notice">
-                <!-- TODO (Legal): revisar el texto de aviso legal con el equipo de investigación.
-                     Este formulario es parte de la simulación del TP. -->
-                [PLACEHOLDER: Aviso legal sobre tratamiento de datos personales]
+                Este formulario es parte de una <strong>simulación educativa</strong>.
+                Los datos no se envían a ningún servidor.
             </p>
 
             <form action="#" method="post" class="contact-form">
@@ -113,20 +112,75 @@
 
                     <label for="nombre">Nombre completo</label>
                     <input type="text" id="nombre" name="nombre" required
-                           placeholder="Ej: Juan Pérez"
-                           autocomplete="name">
+                        placeholder="Ej: Juan Pérez"
+                        autocomplete="name">
 
                     <label for="email">Correo electrónico</label>
                     <input type="email" id="email" name="email" required
-                           placeholder="ejemplo@correo.com"
-                           autocomplete="email">
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email">
 
-                    <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="4"
-                              placeholder="Escribí tu consulta o comentario..."></textarea>
+                    <label for="dni">DNI</label>
+                    <input type="text" id="dni" name="dni" required
+                        placeholder="xx.xxx.xxx"
+                        pattern="\d{2}\.?\d{3}\.?\d{3}"
+                        title="Formato: xx.xxx.xxx"
+                        autocomplete="off">
 
-                    <!-- TODO (Legal): definir si el checkbox de consentimiento es obligatorio
-                         según la Ley 25.326. Por ahora queda como placeholder. -->
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" name="edad" min="1" max="120"
+                        placeholder="Ej: 25">
+
+                    <label for="grupo-sanguineo">Grupo sanguíneo</label>
+                    <select id="grupo-sanguineo" name="grupo-sanguineo">
+                        <option value="">Seleccioná...</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+
+                    <label for="religion">Convicciones religiosas (opcional)</label>
+                    <input type="text" id="religion" name="religion"
+                        placeholder="Ej: católica, atea, etc.">
+
+                    <!-- Cartel legal desplegable -->
+                    <details class="legal-hint">
+                        <summary>⚠️ ¿Por qué te pedimos estos datos?</summary>
+                        <div class="legal-hint-content">
+                            <p>
+                                Este formulario es una <strong>simulación educativa</strong>. En un sitio real,
+                                pedir estos datos sería una infracción a la <strong>Ley 25.326</strong>:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Grupo sanguíneo y convicciones religiosas</strong>
+                                    son <em>datos sensibles</em> (Art. 2). Solo pueden tratarse
+                                    con consentimiento expreso y por finalidades específicas.
+                                </li>
+                                <li>
+                                    <strong>Principio de finalidad y proporcionalidad</strong> (Art. 4):
+                                    los datos pedidos deben ser <em>adecuados, pertinentes y no excesivos</em>
+                                    respecto de la finalidad. Un formulario de "contacto" no justifica
+                                    pedir datos de salud.
+                                </li>
+                                <li>
+                                    <strong>Consentimiento informado</strong> (Art. 5 y 6): el titular
+                                    debe saber <em>quién</em> trata sus datos, <em>para qué</em> y
+                                    <em>por cuánto tiempo</em>.
+                                </li>
+                            </ul>
+                            <p class="legal-hint-footer">
+                                <strong>Infracción simulada:</strong> recolección excesiva de datos
+                                sensibles sin finalidad legítima.
+                            </p>
+                        </div>
+                    </details>
+
                     <label class="checkbox-label">
                         <input type="checkbox" id="consentimiento" name="consentimiento" required>
                         Acepto el tratamiento de mis datos personales.
