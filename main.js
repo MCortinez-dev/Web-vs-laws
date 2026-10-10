@@ -105,3 +105,19 @@ modalLegal.addEventListener("click", (e) => {
 
 // Vincular el botón
 btnGirar.addEventListener("click", girarRuleta);
+
+// ============================================================
+// FORMULARIO DE CONTACTO
+// Interceptamos el submit para evitar que la página se recargue.
+// En un sitio real, acá se enviarían los datos al backend.
+// ============================================================
+
+const contactForm = document.querySelector(".contact-form");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // No recargar la página
+        alert("✅ (Simulación) Tus datos fueron 'enviados'. En un sitio real, acá se almacenarían en una base de datos.");
+        contactForm.reset();
+    });
+}

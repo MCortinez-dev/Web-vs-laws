@@ -363,6 +363,131 @@ section {
 }
 
 /* ------------------------------------------------------------
+   CAMPOS ADICIONALES DEL FORMULARIO
+   Cubrimos input[type="number"] y select para que hereden
+   el mismo estilo que los demás campos.
+   ------------------------------------------------------------ */
+.contact-form input[type="number"],
+.contact-form select {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition);
+    /* Evita que el select herede la flecha nativa gris del SO */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Flecha custom dibujada con un gradiente o caracter */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--space-sm) center;
+    background-size: 1em;
+    padding-right: calc(var(--space-md) + 1em);
+}
+
+.contact-form input[type="number"]:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Opciones del select (fondo oscuro para que se vean bien en Windows) */
+.contact-form select option {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* Quita las flechitas del input number en Chrome/Safari/Edge */
+.contact-form input[type="number"]::-webkit-outer-spin-button,
+.contact-form input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Quita las flechitas del input number en Firefox */
+.contact-form input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ------------------------------------------------------------
+   CARTEL LEGAL DESPLEGABLE (details/summary)
+   Usa el elemento nativo <details> de HTML5.
+   Se usa en el formulario de contacto para explicar por qué
+   pedir ciertos datos es una infracción a la Ley 25.326.
+   ------------------------------------------------------------ */
+.legal-hint {
+    margin: var(--space-sm) 0;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius);
+    background-color: rgba(245, 158, 11, 0.08);
+    overflow: hidden;
+}
+
+.legal-hint summary {
+    padding: var(--space-sm);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-accent);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+/* Oculta el triángulo nativo del navegador */
+.legal-hint summary::marker,
+.legal-hint summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Triángulo custom que rota cuando se abre */
+.legal-hint summary::before {
+    content: "▶";
+    font-size: 0.75em;
+    transition: transform var(--transition);
+    display: inline-block;
+}
+
+.legal-hint[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.legal-hint-content {
+    padding: 0 var(--space-sm) var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.legal-hint-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-left: var(--space-md);
+    list-style: disc;
+    margin: var(--space-xs) 0;
+}
+
+.legal-hint-content li strong {
+    color: var(--color-secondary);
+}
+
+.legal-hint-footer {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-danger);
+    font-size: var(--font-size-sm);
+}
+
+/* ------------------------------------------------------------
    9. FOOTER
    ------------------------------------------------------------ */
 .site-footer {
@@ -527,72 +652,4 @@ section {
 .modal-contenido .btn {
     margin-top: var(--space-sm);
     align-self: flex-end;
-}
-
-/* ------------------------------------------------------------
-   CARTEL LEGAL DESPLEGABLE (details/summary)
-   Se usa en el formulario de contacto para explicar por qué
-   pedir ciertos datos es una infracción a la Ley 25.326.
-   ------------------------------------------------------------ */
-.legal-hint {
-    margin: var(--space-sm) 0;
-    border: 1px solid var(--color-accent);
-    border-radius: var(--radius);
-    background-color: rgba(245, 158, 11, 0.08);
-    overflow: hidden;
-}
-
-.legal-hint summary {
-    padding: var(--space-sm);
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--color-accent);
-    user-select: none;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-}
-
-.legal-hint summary::marker,
-.legal-hint summary::-webkit-details-marker {
-    display: none;
-}
-
-.legal-hint summary::before {
-    content: "▶";
-    font-size: 0.75em;
-    transition: transform var(--transition);
-}
-
-.legal-hint[open] summary::before {
-    transform: rotate(90deg);
-}
-
-.legal-hint-content {
-    padding: 0 var(--space-sm) var(--space-sm);
-    font-size: var(--font-size-sm);
-    color: var(--color-text);
-    line-height: 1.6;
-}
-
-.legal-hint-content ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    padding-left: var(--space-md);
-    list-style: disc;
-    margin: var(--space-xs) 0;
-}
-
-.legal-hint-content li strong {
-    color: var(--color-secondary);
-}
-
-.legal-hint-footer {
-    margin-top: var(--space-sm);
-    padding-top: var(--space-xs);
-    border-top: 1px solid var(--color-border);
-    color: var(--color-danger);
-    font-size: var(--font-size-sm);
 }
