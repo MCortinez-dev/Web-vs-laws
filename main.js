@@ -35,7 +35,8 @@ console.log(`🐱 Vestimenta elegida: ${vestimentaElegida}`);
 
 // ============================================================
 // RULETA GIRATORIA
-// Al presionar el botón, la imagen rota 360° * N vueltas.
+// Al presionar el botón, la imagen rota MUY rápido y va frenando
+// (efecto "ease-out" con duración aleatoria).
 // Cuando termina, se abre el modal con la advertencia legal.
 // ============================================================
 
@@ -44,44 +45,43 @@ const ruletaImg = document.getElementById("ruleta");
 const modalLegal = document.getElementById("modal-legal");
 const btnCerrarModal = document.getElementById("cerrar-modal");
 
-// Estado del giro (para no permitir giros simultáneos)
 let girando = false;
-
-// Ángulo acumulado (para que cada giro sume y no reinicie)
 let anguloActual = 0;
 
 function girarRuleta() {
-    // Si ya está girando, no hacer nada
     if (girando) return;
     girando = true;
 
-    // Vueltas aleatorias entre 3 y 6 + un pequeño ángulo extra
-    // para que no caiga siempre en el mismo lugar
-    const vueltas = Math.floor(Math.random() * 4) + 3; // 3, 4, 5 o 6
+    // Duración aleatoria entre 3 y 5 segundos (más realista)
+    const duracionMs = Math.floor(Math.random() * 2000) + 3000; // 3000-5000ms
+
+    // Vueltas aleatorias (más vueltas = más emoción)
+    const vueltas = Math.floor(Math.random() * 5) + 6; // 6 a 10 vueltas
     const anguloExtra = Math.floor(Math.random() * 360);
     anguloActual += vueltas * 360 + anguloExtra;
 
-    // Aplicar la rotación (el CSS tiene la transición de 4s)
+    // Aplicar transición DINÁMICA según la duración elegida
+    // ease-out hace que arranque rápido y frene suave
+    ruletaImg.style.transition = `transform ${duracionMs}ms cubic-bezier(0.15, 0.85, 0.25, 1)`;
     ruletaImg.style.transform = `rotate(${anguloActual}deg)`;
 
-    // Deshabilitar el botón visualmente mientras gira
+    // Estado visual del botón
     btnGirar.disabled = true;
     btnGirar.textContent = "🎲 Girando...";
 
-    // Esperar a que termine la animación (4s) y mostrar el modal
+    // Esperar el tiempo exacto de la animación y mostrar el modal
     setTimeout(() => {
         girando = false;
         btnGirar.disabled = false;
         btnGirar.textContent = "🎯 Girar la ruleta";
 
-        // Abrir el modal
+        // Abrir el modal legal
         if (typeof modalLegal.showModal === "function") {
             modalLegal.showModal();
         } else {
-            // Fallback por si el navegador no soporta <dialog>
             alert("⚠️ Advertencia Legal: las plataformas de apuestas en Argentina están reguladas. Ver Ley 25.326 y proyectos de ley sobre ludopatía.");
         }
-    }, 4000); // 4000ms = 4s, igual que la transición CSS
+    }, duracionMs);
 }
 
 // Cerrar el modal
@@ -89,7 +89,7 @@ btnCerrarModal.addEventListener("click", () => {
     modalLegal.close();
 });
 
-// Cerrar el modal al hacer click fuera (en el backdrop)
+// Cerrar el modal al hacer click en el backdrop
 modalLegal.addEventListener("click", (e) => {
     if (e.target === modalLegal) {
         modalLegal.close();
