@@ -415,8 +415,11 @@ section {
 
 /* ------------------------------------------------------------
    RULETA - Contenedor e imagen
-   El wrapper NO gira. Solo gira la imagen adentro.
+   IMPORTANTE: el wrapper NO gira. Solo la imagen adentro.
+   Usamos selectores claros para evitar conflictos.
    ------------------------------------------------------------ */
+
+/* Contenedor: solo centra la imagen, no rota nunca */
 .ruleta-wrapper {
     position: relative;
     width: 100%;
@@ -425,36 +428,31 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Sin fondo, sin borde, sin ::before, sin nada que pueda rotar */
 }
 
-/* Círculo decorativo detrás de la ruleta */
-.ruleta-wrapper::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.2), transparent 70%);
-    box-shadow: 0 0 40px rgba(124, 58, 237, 0.5);
-    z-index: 0;
-}
-
+/* Imagen de la ruleta: es la ÚNICA que rota */
 .ruleta-img {
-    position: relative;
-    z-index: 1;
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
     transform-origin: center center;
     will-change: transform;
+    /* Sombra suave opcional (no rota, es solo decorativa) */
+    filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.4));
 }
 
-/* Indicador triangular arriba de la ruleta (opcional, podés sacarlo) */
+/* Indicador triangular arriba de la ruleta (opcional) */
 .ruleta-indicador {
     position: absolute;
     top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 1.5rem;
     color: var(--color-accent);
     pointer-events: none;
+    z-index: 2;
 }
 
 /* ------------------------------------------------------------
@@ -463,14 +461,25 @@ section {
    El navegador se encarga del centrado y del backdrop.
    ------------------------------------------------------------ */
 .modal-legal {
+    /* El navegador centra automáticamente los <dialog> con showModal(),
+       pero forzamos el centrado para navegadores viejos */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+
     border: none;
     border-radius: var(--radius-lg);
     padding: 0;
     max-width: 500px;
     width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
     background-color: var(--color-surface);
     color: var(--color-text);
     box-shadow: var(--shadow-lg);
+    z-index: 1000;
 }
 
 .modal-legal::backdrop {

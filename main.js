@@ -35,33 +35,41 @@ console.log(`🐱 Vestimenta elegida: ${vestimentaElegida}`);
 
 // ============================================================
 // RULETA GIRATORIA
-// Al presionar el botón, la imagen rota MUY rápido y va frenando
-// (efecto "ease-out" con duración aleatoria).
-// Cuando termina, se abre el modal con la advertencia legal.
+// Al presionar el botón, SOLO la imagen de la ruleta rota.
+// El wrapper y el gato se quedan quietos.
 // ============================================================
 
 const btnGirar = document.getElementById("btn-girar");
-const ruletaImg = document.getElementById("ruleta");
 const modalLegal = document.getElementById("modal-legal");
 const btnCerrarModal = document.getElementById("cerrar-modal");
+
+// ⚠️ IMPORTANTE: seleccionamos la imagen por su CLASE, no por ID.
+// Así evitamos conflictos si hay IDs duplicados en el DOM.
+const ruletaImg = document.querySelector(".ruleta-img");
 
 let girando = false;
 let anguloActual = 0;
 
 function girarRuleta() {
     if (girando) return;
+
+    // Verificación de seguridad: si no encontramos la imagen, avisamos
+    if (!ruletaImg) {
+        console.error("❌ No se encontró la imagen de la ruleta (.ruleta-img)");
+        return;
+    }
+
     girando = true;
 
-    // Duración aleatoria entre 3 y 5 segundos (más realista)
-    const duracionMs = Math.floor(Math.random() * 2000) + 3000; // 3000-5000ms
+    // Duración aleatoria entre 3 y 5 segundos
+    const duracionMs = Math.floor(Math.random() * 2000) + 3000;
 
-    // Vueltas aleatorias (más vueltas = más emoción)
-    const vueltas = Math.floor(Math.random() * 5) + 6; // 6 a 10 vueltas
+    // Vueltas aleatorias (6 a 10)
+    const vueltas = Math.floor(Math.random() * 5) + 6;
     const anguloExtra = Math.floor(Math.random() * 360);
     anguloActual += vueltas * 360 + anguloExtra;
 
-    // Aplicar transición DINÁMICA según la duración elegida
-    // ease-out hace que arranque rápido y frene suave
+    // Aplicar SOLO a la imagen
     ruletaImg.style.transition = `transform ${duracionMs}ms cubic-bezier(0.15, 0.85, 0.25, 1)`;
     ruletaImg.style.transform = `rotate(${anguloActual}deg)`;
 
@@ -69,13 +77,12 @@ function girarRuleta() {
     btnGirar.disabled = true;
     btnGirar.textContent = "🎲 Girando...";
 
-    // Esperar el tiempo exacto de la animación y mostrar el modal
+    // Mostrar modal al terminar
     setTimeout(() => {
         girando = false;
         btnGirar.disabled = false;
         btnGirar.textContent = "🎯 Girar la ruleta";
 
-        // Abrir el modal legal
         if (typeof modalLegal.showModal === "function") {
             modalLegal.showModal();
         } else {
