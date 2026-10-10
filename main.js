@@ -123,59 +123,45 @@ if (contactForm) {
 }
 
 // ============================================================
-// CARRUSEL AUTOMÁTICO (versión simple)
-// Avanza solo cada 5 segundos. Se pausa al pasar el mouse.
+// CARRUSEL AUTOMÁTICO
+// Los slides están apilados uno encima del otro en el HTML.
+// Solo uno tiene la clase .activo (visible).
+// Cada 5 segundos, se le saca .activo al actual y se le pone
+// al siguiente. El CSS hace el fade con opacity.
 // Para agregar más slides: sumar <article class="carousel-slide">
 // al HTML. El JS los detecta automáticamente.
 // ============================================================
 
-const carousel = document.querySelector(".carousel-container");
 const slides = document.querySelectorAll(".carousel-slide");
-
-const INTERVALO_MS = 5000;  // 5 segundos entre cada avance
+const INTERVALO_MS = 5000;  // 5 segundos entre cada cambio
 
 let slideActual = 0;
 
 // ------------------------------------------------------------
-// Ir a un slide específico usando scrollTo (respeta el snap)
+// Mostrar un slide específico y ocultar los demás
 // ------------------------------------------------------------
-function irASlide(indice) {
-    if (!carousel || slides.length === 0) return;
+function mostrarSlide(indice) {
+    // Quitar .activo de todos
+    slides.forEach((slide) => slide.classList.remove("activo"));
 
+    // Asegurar que el índice esté dentro del rango (loop circular)
     slideActual = (indice + slides.length) % slides.length;
 
-    const slide = slides[slideActual];
-    carousel.scrollTo({
-        left: slide.offsetLeft - carousel.offsetLeft,
-        behavior: "smooth"
-    });
+    // Poner .activo al slide actual
+    slides[slideActual].classList.add("activo");
 }
 
 // ------------------------------------------------------------
 // Avanzar al siguiente slide
 // ------------------------------------------------------------
 function siguienteSlide() {
-    irASlide(slideActual + 1);
+    mostrarSlide(slideActual + 1);
 }
 
 // ------------------------------------------------------------
-// Auto-avance cada 5 segundos (con pausa al pasar el mouse)
+// Arrancar el auto-avance
 // ------------------------------------------------------------
-if (carousel && slides.length > 1) {
-    let intervalo = setInterval(siguienteSlide, INTERVALO_MS);
-
-    // Pausar al pasar el mouse por encima
-    carousel.addEventListener("mouseenter", () => {
-        clearInterval(intervalo);
-        intervalo = null;
-    });
-
-    // Reanudar al sacar el mouse
-    carousel.addEventListener("mouseleave", () => {
-        if (!intervalo) {
-            intervalo = setInterval(siguienteSlide, INTERVALO_MS);
-        }
-    });
-
+if (slides.length > 1) {
+    setInterval(siguienteSlide, INTERVALO_MS);
     console.log("🎠 Carrusel automático activado. Slides:", slides.length);
 }

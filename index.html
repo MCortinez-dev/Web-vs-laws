@@ -44,13 +44,15 @@
 
         <!-- ------------------------------------------------------------
             SECCIÓN 1: Carrusel promocional
-            Cada slide contiene una imagen de fondo y un texto encima.
+            Los 3 slides se apilan uno encima del otro.
+            Solo el que tiene la clase .activo es visible.
+            El JS rota la clase cada 5 segundos.
             Las imágenes se guardan en assets/carousel/
             ------------------------------------------------------------ -->
         <section id="carousel" class="carousel-section" aria-label="Promociones destacadas">
-            <div class="carousel-container">
+            <div class="carousel-slides">
                 <!-- Slide 1 -->
-                <article class="carousel-slide">
+                <article class="carousel-slide activo">
                     <img
                         src="assets/carousel/slide-01.jpg"
                         alt="Promoción de bienvenida para nuevos usuarios"
