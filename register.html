@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro de usuario en Game World - Proyecto educativo sobre protección de datos personales.">
+    <meta name="author" content="Equipo Game World">
+    <title>Registro | Game World</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="pagina-registro">
+
+    <!-- ============================================================
+         HEADER SIMPLIFICADO: solo logo y botón para volver al inicio
+         ============================================================ -->
+    <header class="site-header header-simplificado">
+        <a href="index.html" class="logo" aria-label="Ir al inicio de Game World">
+            <span class="logo-icon">🎮</span>
+            <span class="logo-text">Game World</span>
+        </a>
+
+        <div class="auth-actions">
+            <a href="index.html" class="btn btn-secondary">← Volver al inicio</a>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         CONTENIDO PRINCIPAL: Formulario de registro
+         ============================================================ -->
+    <main class="main-auth">
+        <section class="registro-section" aria-label="Formulario de registro">
+
+            <h1 class="auth-titulo">Crear cuenta</h1>
+
+            <!-- Aviso educativo: deja claro que es una simulación -->
+            <div class="aviso-simulacion" role="note">
+                <strong>⚠️ Aviso:</strong> este registro es una <em>simulación educativa</em>.
+                No se crea un usuario real, ni se envían datos a ningún servidor.
+                Los datos se guardan solo en tu navegador para mostrar el funcionamiento.
+            </div>
+
+            <form id="form-registro" class="auth-form" novalidate>
+                <fieldset>
+                    <legend>Datos de la cuenta</legend>
+
+                    <label for="reg-nombre">Nombre completo</label>
+                    <input type="text" id="reg-nombre" name="nombre" required
+                           placeholder="Ej: Juan Pérez"
+                           autocomplete="name"
+                           minlength="3">
+
+                    <label for="reg-email">Correo electrónico</label>
+                    <input type="email" id="reg-email" name="email" required
+                           placeholder="ejemplo@correo.com"
+                           autocomplete="email">
+
+                    <label for="reg-password">Contraseña</label>
+                    <input type="password" id="reg-password" name="password" required
+                           placeholder="Mínimo 8 caracteres"
+                           autocomplete="new-password"
+                           minlength="8">
+
+                    <label for="reg-fecha">Fecha de nacimiento</label>
+                    <input type="date" id="reg-fecha" name="fecha-nacimiento" required
+                           autocomplete="bday">
+
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="reg-terminos" name="terminos" required>
+                        Acepto los términos y la política de privacidad
+                    </label>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Registrarme
+                    </button>
+                </fieldset>
+            </form>
+
+            <p class="auth-footer-text">
+                ¿Ya tenés cuenta?
+                <a href="login.html">Iniciar sesión</a>
+            </p>
+
+        </section>
+    </main>
+
+    <!-- ============================================================
+         MODAL DE REGISTRO EXITOSO
+         Se abre al enviar el formulario correctamente.
+         ============================================================ -->
+    <dialog id="modal-registro" class="modal-legal">
+        <div class="modal-contenido">
+            <h2>✅ Registro exitoso (simulado)</h2>
+            <p>
+                Tus datos fueron guardados <strong>solo en este navegador</strong>.
+                En un sitio real, acá se enviarían a un servidor y se crearía
+                una cuenta con verificación por email.
+            </p>
+
+            <h3>Lo que aprendería este TP:</h3>
+            <ul>
+                <li>
+                    <strong>Consentimiento informado (Art. 5 y 6 Ley 25.326):</strong>
+                    el usuario debe saber quién trata sus datos y para qué.
+                </li>
+                <li>
+                    <strong>Finalidad y proporcionalidad (Art. 4):</strong>
+                    no se deben pedir datos que no sean necesarios para el servicio.
+                </li>
+                <li>
+                    <strong>Seguridad (Art. 9):</strong> en un sitio real, la contraseña
+                    debería almacenarse con hashing, y el canal debería ser HTTPS.
+                </li>
+            </ul>
+
+            <div class="modal-acciones">
+                <a href="panel.html" class="btn btn-primary">Ver mi panel</a>
+                <button type="button" id="cerrar-modal-registro" class="btn btn-secondary">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <section class="equipo" aria-label="Equipo de desarrollo">
+            <h2 class="equipo-titulo">Equipo de desarrollo</h2>
+            <ul class="equipo-lista">
+                <li class="miembro">
+                    <img src="https://github.com/jimenaquenallata.png"
+                         alt="Foto de perfil de Jimena Quenatalla"
+                         class="miembro-avatar" width="80" height="80">
+                    <a href="https://github.com/jimenaquenallata"
+                       class="miembro-link" target="_blank" rel="noopener noreferrer">
+                        @jimenaquenallata
+                    </a>
+                </li>
+                <li class="miembro">
+                    <img src="https://github.com/Damianmdominguez.png"
+                         alt="Foto de perfil de Damián Domínguez"
+                         class="miembro-avatar" width="80" height="80">
+                    <a href="https://github.com/Damianmdominguez"
+                       class="miembro-link" target="_blank" rel="noopener noreferrer">
+                        @Damianmdominguez
+                    </a>
+                </li>
+                <li class="miembro">
+                    <img src="https://github.com/German-Bisutti.png"
+                         alt="Foto de perfil de Germán Bisutti"
+                         class="miembro-avatar" width="80" height="80">
+                    <a href="https://github.com/German-Bisutti"
+                       class="miembro-link" target="_blank" rel="noopener noreferrer">
+                        @German-Bisutti
+                    </a>
+                </li>
+                <li class="miembro">
+                    <img src="https://github.com/MCortinez-dev.png"
+                         alt="Foto de perfil de Matías Cortínez"
+                         class="miembro-avatar" width="80" height="80">
+                    <a href="https://github.com/MCortinez-dev"
+                       class="miembro-link" target="_blank" rel="noopener noreferrer">
+                        @MCortinez-dev
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <p class="footer-aviso">
+            Proyecto educativo sobre protección de datos personales y regulaciones de Internet.
+        </p>
+
+        <p class="footer-copyright">
+            &copy; 2026 Game World - Todos los derechos reservados
+        </p>
+    </footer>
+
+    <script src="register.js"></script>
+
+</body>
+</html>

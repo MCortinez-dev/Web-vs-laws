@@ -788,3 +788,166 @@ section {
     margin-top: var(--space-sm);
     align-self: flex-end;
 }
+
+/* ============================================================
+   PÁGINAS DE AUTENTICACIÓN (register.html, login.html)
+   Estilos específicos para las páginas de registro y login.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   HEADER SIMPLIFICADO
+   Solo logo + botón de volver. Sin navegación principal.
+   ------------------------------------------------------------ */
+.header-simplificado {
+    justify-content: space-between;
+}
+
+/* ------------------------------------------------------------
+   MAIN: centrar el formulario verticalmente
+   ------------------------------------------------------------ */
+.main-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+    padding: var(--space-lg) var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   SECCIÓN DE REGISTRO
+   Tarjeta centrada con ancho máximo.
+   ------------------------------------------------------------ */
+.registro-section,
+.login-section {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-titulo {
+    font-size: var(--font-size-2xl);
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   AVISO DE SIMULACIÓN
+   Cartel destacado que deja claro que no es un registro real.
+   ------------------------------------------------------------ */
+.aviso-simulacion {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+    padding: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.aviso-simulacion strong {
+    color: var(--color-accent);
+}
+
+/* ------------------------------------------------------------
+   FORMULARIO DE AUTENTICACIÓN
+   Reutiliza el estilo de campos del formulario de contacto,
+   pero con ajustes propios.
+   ------------------------------------------------------------ */
+.auth-form fieldset {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.auth-form legend {
+    padding: 0 var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.auth-form label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="date"] {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition);
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Botón que ocupa todo el ancho */
+.btn-block {
+    width: 100%;
+    margin-top: var(--space-sm);
+}
+
+/* ------------------------------------------------------------
+   TEXTO AL PIE DEL FORMULARIO
+   ------------------------------------------------------------ */
+.auth-footer-text {
+    text-align: center;
+    margin-top: var(--space-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+.auth-footer-text a {
+    color: var(--color-secondary);
+    font-weight: 600;
+    transition: color var(--transition);
+}
+
+.auth-footer-text a:hover {
+    color: var(--color-primary);
+}
+
+/* ------------------------------------------------------------
+   ACCIONES DEL MODAL (botones múltiples)
+   ------------------------------------------------------------ */
+.modal-acciones {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+    .registro-section,
+    .login-section {
+        padding: var(--space-md);
+    }
+
+    .auth-titulo {
+        font-size: var(--font-size-xl);
+    }
+}
