@@ -163,17 +163,11 @@ ul {
     z-index: 100;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    color: var(--color-text);
-}
-
 .logo-icon {
-    font-size: var(--font-size-xl);
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
 }
 
 .main-nav ul {
