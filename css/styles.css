@@ -163,11 +163,28 @@ ul {
     z-index: 100;
 }
 
+/* ------------------------------------------------------------
+   LOGO DEL HEADER
+   Contiene el ícono (imagen) y el texto. Flexbox los alinea
+   verticalmente y les da una separación cómoda.
+   ------------------------------------------------------------ */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1;
+}
+
 .logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
     display: block;
+    /* El ícono no crece ni se achica */
+    flex-shrink: 0;
 }
 
 .main-nav ul {
