@@ -142,3 +142,73 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ============================================================
+   MODAL LEGAL (<dialog>)
+   Estilos para la ventana emergente de advertencia educativa.
+   ============================================================ */
+.modal-legal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+}
+
+.modal-legal::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
+}
+
+.modal-contenido {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.modal-contenido h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+}
+
+.modal-contenido p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.modal-contenido ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    padding-left: var(--space-sm);
+    list-style: disc;
+    color: var(--color-text);
+}
+
+.modal-contenido li {
+    line-height: 1.5;
+}
+
+.modal-contenido li strong {
+    color: var(--color-secondary);
+}
+
+.modal-contenido .btn {
+    margin-top: var(--space-sm);
+    align-self: flex-end;
+}

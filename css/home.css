@@ -14,20 +14,23 @@ section {
     padding: var(--space-md) 0;
 }
 
-/* ------------------------------------------------------------
+/* ============================================================
    CARRUSEL PROMOCIONAL
-   ------------------------------------------------------------ */
+   ============================================================ */
 .carousel-section {
     max-width: 900px;
+    width: 100%;
     margin: 30px auto;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background-color: var(--color-surface);
 }
 
 .carousel-slides {
     position: relative;
-    height: 380px; /* Altura fija esencial para que las imágenes apiladas se muestren */
+    width: 100%;
+    height: 380px; /* Altura obligatoria para imágenes absolutas */
 }
 
 .carousel-slide {
@@ -37,17 +40,20 @@ section {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
 }
 
 .carousel-slide.activo {
-    opacity: 1; /* Solo el slide activo es visible */
+    opacity: 1;
+    visibility: visible; /* Asegura que el slide activo sea visible por el navegador */
 }
 
 .carousel-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .carousel-texto {
@@ -55,8 +61,8 @@ section {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 25px 20px 20px 20px;
     box-sizing: border-box;
 }
 
