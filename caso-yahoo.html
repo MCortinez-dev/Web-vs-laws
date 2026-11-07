@@ -9,7 +9,24 @@
 </head>
 <body>
 
-    <!-- Header (mantenés el de index.html) -->
+    <!-- Header (Consistente con index.html) -->
+    <header class="site-header">
+        <a href="index.html" class="logo" aria-label="Ir al inicio de Game World">
+            <img src="assets/favicon/favicon-32x32.png" alt="" class="logo-icon" width="32" height="32">
+            <span class="logo-text">Game World</span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html#carousel">Promociones</a></li>
+                <li><a href="index.html#ruleta">Ruleta</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="auth-actions">
+            <a href="panel.html" class="btn btn-secondary">Iniciar sesión</a>
+            <a href="register.html" class="btn btn-primary">Registrate</a>
+        </div>
+    </header>
 
     <main class="yahoo-container">
         <header class="game-header">
@@ -17,67 +34,61 @@
             <p>Avanzá por la línea de tiempo cumpliendo las acciones de cada hito para entender la caída de un gigante.</p>
         </header>
 
-        <!-- Barra de progreso / Línea de tiempo general -->
+        <!-- HUD / Indicador de Año y Misión -->
+        <div class="game-hud">
+            <span class="year-badge">📅 AÑO: <span id="current-year">2010</span></span>
+            <span class="mission-title" id="mission-title">Hito: Adquisición de Associated Content</span>
+        </div>
+
+        <!-- Barra de progreso / Línea de tiempo -->
         <nav class="timeline-nav">
-            <button class="step-btn active" data-step="1">2010</button>
-            <button class="step-btn" data-step="2">2012</button>
-            <button class="step-btn" data-step="3">2013</button>
-            <button class="step-btn" data-step="4">2014</button>
-            <button class="step-btn" data-step="5">2016</button>
-            <button class="step-btn" data-step="6">2017</button>
-            <button class="step-btn" data-step="7">2018</button>
-            <button class="step-btn" data-step="8">2019</button>
+            <button class="step-btn active" data-step="2010">2010</button>
+            <button class="step-btn" data-step="2012">2012</button>
+            <button class="step-btn" data-step="2013">2013</button>
+            <button class="step-btn" data-step="2014">2014</button>
+            <button class="step-btn" data-step="2016">2016</button>
+            <button class="step-btn" data-step="2017">2017</button>
+            <button class="step-btn" data-step="2018">2018</button>
+            <button class="step-btn" data-step="2019">2019</button>
         </nav>
 
-        <!-- Tablero del Juego -->
-        <section id="game-stage" class="game-stage">
-            
-            <!-- Hito 2010: Adquisición -->
-            <article class="stage-card active" id="stage-2010">
-                <h2>2010: Adquisición de Associated Content</h2>
-                <div class="canvas-area">
-                    <div class="entity" id="yahoo-logo">
-                        <img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo">
-                    </div>
-                    <div class="draggable-item" id="money-bill" draggable="true">
-                        💵 $100M USD
-                    </div>
-                    <div class="drop-zone" id="target-associated">
-                        <img src="assets/yahoo/associated-content.svg" alt="Associated Content">
-                        <p>Arrastrá el dinero aquí para completar la compra</p>
-                    </div>
-                </div>
-                <div class="stage-info">
-                    <p>Yahoo compra Associated Content por $100M (luego Yahoo Voices), arrastrando problemas de seguridad internos sin resolver.</p>
-                </div>
-            </article>
+        <!-- Tablero de Juego (Izquierda vs Derecha) -->
+        <section class="versus-stage">
+            <!-- Izquierda: Yahoo -->
+            <div class="entity-box">
+                <img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo">
+                <p>Yahoo!</p>
+            </div>
 
-            <!-- Hito 2014: Phishing -->
-            <article class="stage-card" id="stage-2014" style="display:none;">
-                <h2>2014: El Clic Fatal</h2>
-                <div class="phishing-sim">
-                    <div class="email-box">
-                        <p><strong>De:</strong> soporte-falso@yahoo.com</p>
-                        <p><strong>Asunto:</strong> URGENTE: Actualizá tu credencial corporativa</p>
-                        <button id="btn-phishing" class="btn btn-danger">Hacer clic en el enlace</button>
-                    </div>
-                </div>
-                <div class="stage-info">
-                    <p>Un solo clic permitió la intrusión de hackers (Alexsey Belan y oficiales del FSB) a la base de datos UDB.</p>
-                </div>
-            </article>
+            <div class="vs-separator">⚡</div>
 
+            <!-- Derecha: Elemento interactivo / Empresa o Evento -->
+            <div class="entity-box" id="drop-target">
+                <img src="assets/yahoo/associated-content.svg" alt="Associated Content">
+                <p>Associated Content ($100M)</p>
+            </div>
+        </section>
+
+        <!-- Pantalla Retro / Terminal MS-DOS para logs e historia -->
+        <section class="retro-tv" style="margin-top: 20px;">
+            <p id="terminal-text">> [SISTEMA INICIALIZADO] Año 2010: Yahoo adquiere Associated Content por $100 millones.</p>
+            <p>> [ADVERTENCIA] La plataforma arrastraba fallas de seguridad internas sin resolver...</p>
         </section>
 
         <!-- Panel de explicación legal/técnica -->
-        <aside class="legal-feedback" id="legal-feedback">
+        <aside class="legal-feedback" id="legal-feedback" style="margin-top: 20px;">
             <h3>⚖️ Impacto Legal y Regulatorio</h3>
-            <p id="feedback-text">Completá la acción del año 2010 para avanzar.</p>
+            <p id="feedback-text">Completá la acción del año 2010 para avanzar en la cronología.</p>
         </aside>
     </main>
 
-    <!-- Footer (mantenés el de index.html) -->
+    <!-- Footer (Consistente con index.html) -->
+    <footer class="site-footer">
+        <p class="footer-aviso"><strong>Proyecto educativo</strong> sobre protección de datos personales y regulaciones de Internet.</p>
+        <p class="footer-copyright">&copy; 2026 Game World - Todos los derechos reservados</p>
+    </footer>
 
+    <!-- Archivo JavaScript principal del juego -->
     <script src="js/yahoo-game.js"></script>
 </body>
 </html>
