@@ -149,6 +149,9 @@
     font-size: var(--font-size-lg);
 }
 
+/* ------------------------------------------------------------
+   MINI JUEGO: Gato interactivo
+   ------------------------------------------------------------ */
 .juego-area {
     position: relative;
     width: 100%;
@@ -168,8 +171,8 @@
 .juego-gato {
     position: absolute;
     z-index: 5;
-    width: 65px;
-    height: 65px;
+    width: 90px;   /* Aumentado de 65px a 90px para que sea más fácil de hacer clic */
+    height: 90px;  /* Aumentado de 65px a 90px */
     background: none;
     border: none;
     cursor: pointer;
@@ -182,11 +185,11 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6)); /* Sombra más marcada para darle relieve */
 }
 
 .juego-gato:hover {
-    transform: scale(1.15);
+    transform: scale(1.2); /* Crece un poquito más al pasar el mouse */
 }
 
 .juego-gato:active {
