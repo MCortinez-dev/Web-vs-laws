@@ -1,0 +1,37 @@
+/* ============================================================
+   VARIABLES GLOBALES (:root)
+   Centralizamos la paleta de colores, tipografías y sombras.
+   Si queremos rediseñar el sitio más adelante, solo se cambia acá.
+   ============================================================ */
+:root {
+    --color-bg: #0f0f1a;
+    --color-bg-alt: #1a1a2e;
+    --color-surface: #22223b;
+    --color-primary: #7c3aed;
+    --color-primary-hover: #6d28d9;
+    --color-secondary: #06b6d4;
+    --color-accent: #f59e0b;
+    --color-danger: #ef4444;
+    --color-text: #e5e7eb;
+    --color-text-muted: #9ca3af;
+    --color-border: #2d2d44;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.75rem;
+    --font-size-2xl: 2.5rem;
+
+    --radius: 8px;
+    --radius-lg: 16px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --transition: 0.25s ease;
+}

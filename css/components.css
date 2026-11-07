@@ -1,0 +1,144 @@
+/* ============================================================
+   COMPONENTES COMPARTIDOS
+   Estilos para el header superior, el footer institucional
+   y los modales legales que se abren en varias páginas.
+   ============================================================ */
+
+/* Header fijo */
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.main-nav a {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    transition: color var(--transition);
+}
+
+.main-nav a:hover {
+    color: var(--color-secondary);
+}
+
+.auth-actions {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+/* Footer institucional */
+.site-footer {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.equipo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.equipo-titulo {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.equipo-lista {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 600px;
+    justify-items: center;
+}
+
+.miembro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+}
+
+.miembro-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-surface);
+    transition: border-color var(--transition), transform var(--transition);
+}
+
+.miembro-avatar:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+.miembro-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    word-break: break-all;
+}
+
+.footer-aviso {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.footer-aviso strong {
+    color: var(--color-secondary);
+}
+
+.footer-copyright {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+    .equipo-lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

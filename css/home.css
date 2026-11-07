@@ -1,0 +1,164 @@
+/* ============================================================
+   ESTILOS ESPECÍFICOS DE LA HOME (index.html)
+   Controla el diseño del carrusel, la ruleta y el formulario.
+   ============================================================ */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+section {
+    padding: var(--space-md) 0;
+}
+
+/* Carrusel de promociones (proporción equilibrada) */
+.carousel-section {
+    max-width: 900px;
+    margin: 30px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-slides {
+    position: relative;
+    height: 380px;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.carousel-slide.activo {
+    opacity: 1;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-texto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+}
+
+/* Sección Ruleta */
+.ruleta-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    justify-items: center;
+}
+
+.ruleta-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.ruleta-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ruleta-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.4));
+}
+
+.ruleta-indicador {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+.btn-ruleta {
+    background-color: var(--color-accent);
+    color: #1a1a2e;
+    font-size: var(--font-size-lg);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.mascota img {
+    width: 100%;
+    max-width: 230px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+}
+
+/* Formulario educativo */
+.contacto-section {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+}
+
+.contacto-section h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-secondary);
+}
+
+.form-notice {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    border-left: 3px solid var(--color-accent);
+    background-color: rgba(245, 158, 11, 0.08);
+    border-radius: var(--radius);
+}
+
+.contact-form fieldset {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.contact-form input, .contacto-section select {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+    .ruleta-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
