@@ -65,11 +65,9 @@ El proyecto analiza y ejemplifica los artículos clave de la legislación vigent
 
 ## 🚀 Despliegue y Ejecución Local
 
-    1. Clonar el repositorio:
-    
-    ```Bash
-    git clone [https://github.com/tu-usuario/WebVsLaws.git](https://github.com/tu-usuario/WebVsLaws.git)
-    ```
-
-    2. Abrir la carpeta del proyecto en tu editor de código (como VS Code).
-    3. Levantar un servidor local (por ejemplo, utilizando la extensión Live Server) para permitir la carga dinámica de los componentes de header.html y footer.html.
+1. Clonar el repositorio:
+```Bash
+git clone [https://github.com/tu-usuario/WebVsLaws.git](https://github.com/tu-usuario/WebVsLaws.git)
+```
+2. Abrir la carpeta del proyecto en tu editor de código (como VS Code).
+3. Levantar un servidor local (por ejemplo, utilizando la extensión Live Server) para permitir la carga dinámica de los componentes de header.html y footer.html.
