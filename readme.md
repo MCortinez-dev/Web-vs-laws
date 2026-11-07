@@ -2,7 +2,7 @@
 
 > Proyecto académico interactivo desarrollado en **HTML5, CSS3 modular y JavaScript vainilla**, enfocado en la concientización sobre la privacidad en Internet, la seguridad informática y las normativas de protección de datos personales (con especial foco en la **Ley 25.326 de Argentina**).
 
-[![Vercel Live Demo](https://img.shields.io/badge/Vercel-Sitio_En_Vivo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://gameworld-rouge.vercel.app/caso-yahoo.html)
+[![Vercel Live Demo](https://img.shields.io/badge/Vercel-Sitio_En_Vivo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://gameworld-rouge.vercel.app/index.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 ---
 
@@ -68,7 +68,7 @@ El proyecto analiza y ejemplifica los artículos clave de la legislación vigent
     1. Clonar el repositorio:
     
     ```Bash
-        git clone [https://github.com/tu-usuario/WebVsLaws.git](https://github.com/tu-usuario/WebVsLaws.git)
+    git clone [https://github.com/tu-usuario/WebVsLaws.git](https://github.com/tu-usuario/WebVsLaws.git)
     ```
 
     2. Abrir la carpeta del proyecto en tu editor de código (como VS Code).
