@@ -1,74 +1,173 @@
-/* HUD de Año / Progreso */
-.game-hud {
+/* --- Cápsula 3D de Línea de Tiempo --- */
+.timeline-capsule-wrapper {
+    margin: 20px 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #333;
+    justify-content: center;
 }
 
-.year-badge {
-    font-size: 1.5rem;
+.timeline-capsule {
+    position: relative;
+    display: flex;
+    background: linear-gradient(145deg, #181820, #0d0d12);
+    border-radius: 50px;
+    padding: 8px 15px;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.8), 
+                0 6px 15px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(120, 0, 255, 0.2);
+    border: 2px solid #2a2a38;
+    gap: 8px;
+    overflow: hidden;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Barra de relleno interior animada */
+.timeline-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(120,0,255,0.4), rgba(0,220,255,0.6));
+    border-radius: 50px;
+    transition: width 0.4s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.timeline-capsule .step-btn {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    color: #a0a0c0;
     font-weight: bold;
-    color: #ffd700;
-    font-family: monospace;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
-/* Escenario dividido: Izquierda vs Derecha */
+.timeline-capsule .step-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.timeline-capsule .step-btn.active {
+    background: linear-gradient(145deg, #5b21b6, #7c3aed);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.6),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- Globos / Insignias 3D (Bubbles) --- */
 .versus-stage {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 20px;
-    background: #111;
-    padding: 30px;
-    border-radius: 12px;
-    min-height: 300px;
-    border: 1px solid #222;
+    justify-items: center;
+    background: radial-gradient(circle at center, #1b1b2f 0%, #0f0f1a 100%);
+    padding: 35px 20px;
+    border-radius: 16px;
+    border: 2px solid #2a2a40;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 8px 25px rgba(0,0,0,0.6);
+    margin: 20px 0;
+    gap: 15px;
 }
 
-.entity-box {
-    text-align: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
+.entity-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.entity-box img {
-    max-width: 120px;
-    height: auto;
-}
-
-.vs-separator {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #888;
-}
-
-/* Efecto Televisor Retro / Terminal MS-DOS / CRT */
-.retro-tv {
-    background-color: #050505;
-    color: #00ff66;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 25px;
-    border-radius: 12px;
-    border: 6px solid #2b2b2b;
-    box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.2), 0 0 15px rgba(0,0,0,0.8);
+.bubble-inner {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2b2b45, #151522);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7),
+                inset 0 4px 8px rgba(255, 255, 255, 0.15),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.6);
+    border: 3px solid #3b3b5c;
     position: relative;
     overflow: hidden;
-    min-height: 180px;
 }
 
-/* Líneas de escaneo del monitor antiguo */
+/* Efecto brillo tipo esfera / globo 3D */
+.bubble-inner::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 20px;
+    width: 40px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: rotate(-25deg);
+}
+
+.bubble-inner img {
+    max-width: 70px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.entity-bubble p {
+    color: #e2e8f0;
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    margin: 0;
+}
+
+/* Botón interactivo central en el escenario */
+.vs-separator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pulse-btn {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+/* --- Terminal Retro / TV --- */
+.retro-tv {
+    background-color: #050805;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px 25px;
+    border-radius: 12px;
+    border: 5px solid #1e293b;
+    box-shadow: inset 0 0 25px rgba(0, 255, 102, 0.15), 0 6px 20px rgba(0,0,0,0.8);
+    position: relative;
+    overflow: hidden;
+    min-height: 90px;
+    margin-top: 20px;
+}
+
 .retro-tv::before {
     content: " ";
     display: block;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
     background-size: 100% 4px;
     z-index: 10;
     pointer-events: none;
@@ -78,5 +177,24 @@
     position: relative;
     z-index: 1;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- Panel Legal --- */
+.legal-feedback {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid #334155;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.legal-feedback h3 {
+    margin-top: 0;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
