@@ -9,54 +9,39 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <title>Mi panel | Game World</title>
-    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Hojas de estilo modulares (respetando orden de cascada) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/panel.css">
 </head>
 <body class="pagina-panel">
 
-    <!-- ============================================================
-         HEADER SIMPLIFICADO
-         ============================================================ -->
-    <header class="site-header header-simplificado">
-        <a href="index.html" class="logo" aria-label="Ir al inicio de Game World">
-            <img
-                src="assets/favicon/favicon-32x32.png"
-                alt=""
-                class="logo-icon"
-                width="32"
-                height="32"
-            >
-            <span class="logo-text">Game World</span>
-        </a>
-        <div class="auth-actions">
-            <a href="index.html" class="btn btn-secondary">← Volver al inicio</a>
-        </div>
-    </header>
+    <!-- Header cargado dinámicamente -->
+    <div id="header-container"></div>
 
-    <!-- ============================================================
-         CONTENIDO PRINCIPAL
-         ============================================================ -->
+    <!-- Contenido Principal -->
     <main class="main-panel">
 
-        <!-- ------------------------------------------------------------
-             TARJETA 1: Datos del usuario
-             ------------------------------------------------------------ -->
-        <section class="panel-card" aria-label="Datos del usuario">
-            <h1 class="panel-titulo">Mi perfil</h1>
+        <!-- TARJETA 1: Perfil y Datos del usuario -->
+        <section class="panel-card" aria-labelledby="perfil-titulo">
+            <h1 id="perfil-titulo" class="panel-titulo">Mi perfil</h1>
 
             <div id="datos-usuario">
-                <!-- Los datos se inyectan con JS -->
+                <!-- Los datos guardados en LocalStorage se inyectan acá mediante JS -->
                 <p class="panel-cargando">Cargando datos...</p>
             </div>
 
-            <!-- Desplegable del caso Yahoo: aparece al hacer clic en "Cambiar contraseña" -->
+            <!-- Desplegable del caso Yahoo: Caso educativo sobre cifrado e infracción al Art. 9 -->
             <details class="cambio-password">
                 <summary>🔒 Cambiar contraseña</summary>
 
                 <div class="cambio-password-contenido">
-                    <div class="aviso-yahoo">
-                        <p class="aviso-yahoo-titulo">
+                    <article class="aviso-yahoo">
+                        <h2 class="aviso-yahoo-titulo">
                             ⚠️ Por error de cifrado, Yahoo filtró más de 3.000 millones de cuentas
-                        </p>
+                        </h2>
                         <p class="aviso-yahoo-texto">
                             En 2013, Yahoo sufrió el mayor hackeo de la historia: <strong>3.000 millones
                             de cuentas</strong> afectadas, incluyendo <strong>7.970.680 argentinos</strong>.
@@ -64,34 +49,32 @@
                             técnicas adecuadas (Art. 9 Ley 25.326).
                         </p>
                         <p class="aviso-yahoo-texto">
-                            Si este sitio fuera real, tu contraseña debería estar almacenada con
-                            <strong>hashing</strong> (bcrypt, Argon2), y el canal debería ser HTTPS.
+                            Si este sitio fuera real, tu contraseña debería estar almacenada mediante
+                            <strong>hashing</strong> (bcrypt, Argon2), y la conexión protegida por HTTPS.
                             La AAIP multó a Yahoo por no cumplir con el deber de seguridad.
                         </p>
 
                         <a href="caso-yahoo.html" class="btn btn-accent btn-block">
                             Ver análisis completo del caso Yahoo →
                         </a>
-                    </div>
+                    </article>
                 </div>
             </details>
 
             <div class="panel-acciones">
-                <!-- Modificar: redirige a register.html (que precarga los datos) -->
+                <!-- Redirige a register.html para editar datos precargados -->
                 <a href="register.html" class="btn btn-primary">Modificar datos</a>
 
-                <!-- Eliminar: abre el modal de confirmación -->
+                <!-- Dispara la apertura del modal de confirmación -->
                 <button type="button" id="btn-eliminar" class="btn btn-danger">
                     Eliminar cuenta
                 </button>
             </div>
         </section>
 
-        <!-- ------------------------------------------------------------
-             TARJETA 2: Mini juego
-             ------------------------------------------------------------ -->
-        <section class="panel-card" aria-label="Mini juego">
-            <h2 class="panel-subtitulo">🎮 Atrapá al gato</h2>
+        <!-- TARJETA 2: Mini juego interactivo del gato -->
+        <section class="panel-card" aria-labelledby="juego-titulo">
+            <h2 id="juego-titulo" class="panel-subtitulo">🎮 Atrapá al gato</h2>
             <p class="panel-descripcion">
                 Hacé clic en el gato la mayor cantidad de veces en 10 segundos.
             </p>
@@ -103,7 +86,7 @@
                 </div>
 
                 <div id="juego-area" class="juego-area">
-                    <!-- El gato aparece acá. Se mueve aleatoriamente con JS. -->
+                    <!-- El botón/elemento del gato se genera o reposiciona aleatoriamente con JS -->
                 </div>
 
                 <button type="button" id="btn-jugar" class="btn btn-primary btn-block">
@@ -114,9 +97,7 @@
 
     </main>
 
-    <!-- ============================================================
-         MODAL DE CONFIRMACIÓN DE ELIMINACIÓN
-         ============================================================ -->
+    <!-- MODAL DE CONFIRMACIÓN DE ELIMINACIÓN DE CUENTA -->
     <dialog id="modal-eliminar" class="modal-legal">
         <div class="modal-contenido">
             <h2>⚠️ Eliminar cuenta</h2>
@@ -134,20 +115,20 @@
                 </li>
                 <li>
                     <strong>Derecho al olvido:</strong> reconocido por la Corte Suprema
-                    en el caso "Google Spain" (2014). Permite solicitar la eliminación
-                    de información personal de los motores de búsqueda.
+                    en jurisprudencia relevante. Permite solicitar la eliminación
+                    de información personal.
                 </li>
                 <li>
                     <strong>Datos sensibles (Art. 7):</strong> los datos de salud,
-                    origen racial, opiniones políticas, convicciones religiosas y
-                    vida sexual <em>no pueden</em> ser tratados sin consentimiento expreso.
+                    origen racial, opiniones políticas o convicciones religiosas
+                    <em>no pueden</em> ser tratados sin consentimiento expreso.
                 </li>
             </ul>
 
             <p class="modal-advertencia">
                 <strong>Importante:</strong> en un sitio real, la eliminación puede
                 no ser inmediata. Muchas empresas retienen datos por obligaciones
-                legales o contables. Eso también está regulado por la ley.
+                legales o contables reguladas por la ley.
             </p>
 
             <div class="modal-acciones">
@@ -161,62 +142,11 @@
         </div>
     </dialog>
 
-    <!-- ============================================================
-         FOOTER
-         ============================================================ -->
-    <footer class="site-footer">
-        <section class="equipo" aria-label="Equipo de desarrollo">
-            <h2 class="equipo-titulo">Equipo de desarrollo</h2>
-            <ul class="equipo-lista">
-                <li class="miembro">
-                    <img src="https://github.com/jimenaquenallata.png"
-                         alt="Foto de perfil de Jimena Quenatalla"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/jimenaquenallata"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @jimenaquenallata
-                    </a>
-                </li>
-                <li class="miembro">
-                    <img src="https://github.com/Damianmdominguez.png"
-                         alt="Foto de perfil de Damián Domínguez"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/Damianmdominguez"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @Damianmdominguez
-                    </a>
-                </li>
-                <li class="miembro">
-                    <img src="https://github.com/German-Bisutti.png"
-                         alt="Foto de perfil de Germán Bisutti"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/German-Bisutti"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @German-Bisutti
-                    </a>
-                </li>
-                <li class="miembro">
-                    <img src="https://github.com/MCortinez-dev.png"
-                         alt="Foto de perfil de Matías Cortínez"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/MCortinez-dev"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @MCortinez-dev
-                    </a>
-                </li>
-            </ul>
-        </section>
+    <!-- Footer cargado dinámicamente -->
+    <div id="footer-container"></div>
 
-        <p class="footer-aviso">
-            Proyecto educativo sobre protección de datos personales y regulaciones de Internet.
-        </p>
-
-        <p class="footer-copyright">
-            &copy; 2026 Game World - Todos los derechos reservados
-        </p>
-    </footer>
-
-    <script src="panel.js"></script>
-
+    <!-- Scripts de la aplicación (Inclusión de componentes + Lógica del panel y minijuego) -->
+    <script src="js/include-components.js"></script>
+    <script src="js/panel.js"></script>
 </body>
 </html>
