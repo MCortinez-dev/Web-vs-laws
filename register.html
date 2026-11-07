@@ -9,22 +9,19 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <title>Registro | Game World</title>
-    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Hojas de estilo modulares (orden de cascada correcto) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
 </head>
 <body class="pagina-registro">
 
-    <!-- ============================================================
-         HEADER SIMPLIFICADO: solo logo y botón para volver al inicio
-         ============================================================ -->
+    <!-- Header simplificado: solo logo y botón para volver al inicio -->
     <header class="site-header header-simplificado">
         <a href="index.html" class="logo" aria-label="Ir al inicio de Game World">
-            <img
-                src="assets/favicon/favicon-32x32.png"
-                alt=""
-                class="logo-icon"
-                width="32"
-                height="32"
-            >
+            <img src="assets/favicon/favicon-32x32.png" alt="" class="logo-icon" width="32" height="32">
             <span class="logo-text">Game World</span>
         </a>
 
@@ -33,15 +30,13 @@
         </div>
     </header>
 
-    <!-- ============================================================
-         CONTENIDO PRINCIPAL: Formulario de registro
-         ============================================================ -->
+    <!-- Contenido principal: Formulario de registro -->
     <main class="main-auth">
         <section class="registro-section" aria-label="Formulario de registro">
 
             <h1 class="auth-titulo">Crear cuenta</h1>
 
-            <!-- Aviso educativo: deja claro que es una simulación -->
+            <!-- Aviso educativo: simulación de almacenamiento local -->
             <div class="aviso-simulacion" role="note">
                 <strong>⚠️ Aviso:</strong> este registro es una <em>simulación educativa</em>.
                 No se crea un usuario real, ni se envían datos a ningún servidor.
@@ -92,10 +87,7 @@
         </section>
     </main>
 
-    <!-- ============================================================
-         MODAL DE REGISTRO EXITOSO
-         Se abre al enviar el formulario correctamente.
-         ============================================================ -->
+    <!-- Modal de registro exitoso -->
     <dialog id="modal-registro" class="modal-legal">
         <div class="modal-contenido">
             <h2>✅ Registro exitoso (simulado)</h2>
@@ -130,62 +122,12 @@
         </div>
     </dialog>
 
-    <!-- ============================================================
-         FOOTER
-         ============================================================ -->
-    <footer class="site-footer">
-        <section class="equipo" aria-label="Equipo de desarrollo">
-            <h2 class="equipo-titulo">Equipo de desarrollo</h2>
-            <ul class="equipo-lista">
-                <li class="miembro">
-                    <img src="https://github.com/jimenaquenallata.png"
-                         alt="Foto de perfil de Jimena Quenatalla"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/jimenaquenallata"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @jimenaquenallata
-                    </a>
-                </li>
-                <li class="miembro">
-                    <img src="https://github.com/Damianmdominguez.png"
-                         alt="Foto de perfil de Damián Domínguez"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/Damianmdominguez"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @Damianmdominguez
-                    </a>
-                </li>
-                <li class="miembro">
-                    <img src="https://github.com/German-Bisutti.png"
-                         alt="Foto de perfil de Germán Bisutti"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/German-Bisutti"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @German-Bisutti
-                    </a>
-                </li>
-                <li class="miembro">
-                    <img src="https://github.com/MCortinez-dev.png"
-                         alt="Foto de perfil de Matías Cortínez"
-                         class="miembro-avatar" width="80" height="80">
-                    <a href="https://github.com/MCortinez-dev"
-                       class="miembro-link" target="_blank" rel="noopener noreferrer">
-                        @MCortinez-dev
-                    </a>
-                </li>
-            </ul>
-        </section>
+    <!-- Footer cargado dinámicamente -->
+    <div id="footer-container"></div>
 
-        <p class="footer-aviso">
-            <strong>Proyecto educativo</strong> sobre protección de datos personales y regulaciones de Internet.
-        </p>
-
-        <p class="footer-copyright">
-            &copy; 2026 Game World - Todos los derechos reservados
-        </p>
-    </footer>
-
-    <script src="register.js"></script>
+    <!-- Scripts de la aplicación (Ruta corregida a js/) -->
+    <script src="js/include-components.js"></script>
+    <script src="js/register.js"></script>
 
 </body>
 </html>
