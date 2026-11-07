@@ -171,8 +171,8 @@
 .juego-gato {
     position: absolute;
     z-index: 5;
-    width: 90px;   /* Aumentado de 65px a 90px para que sea más fácil de hacer clic */
-    height: 90px;  /* Aumentado de 65px a 90px */
+    width: 90px !important;   /* Forzamos el tamaño ignorando estilos en línea del JS */
+    height: 90px !important;  /* Forzamos el tamaño */
     background: none;
     border: none;
     cursor: pointer;
