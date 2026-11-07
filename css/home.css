@@ -1,6 +1,5 @@
 /* ============================================================
    ESTILOS ESPECÍFICOS DE LA HOME (index.html)
-   Controla el diseño del carrusel, la ruleta y el formulario.
    ============================================================ */
 main {
     max-width: 1200px;
@@ -15,7 +14,9 @@ section {
     padding: var(--space-md) 0;
 }
 
-/* Carrusel de promociones (proporción equilibrada) */
+/* ------------------------------------------------------------
+   CARRUSEL PROMOCIONAL
+   ------------------------------------------------------------ */
 .carousel-section {
     max-width: 900px;
     margin: 30px auto;
@@ -56,9 +57,23 @@ section {
     width: 100%;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Sección Ruleta */
+.carousel-texto h3 {
+    font-size: var(--font-size-lg);
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.carousel-texto p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+/* ------------------------------------------------------------
+   SECCIÓN RULETA + MASCOTA
+   ------------------------------------------------------------ */
 .ruleta-section {
     display: grid;
     grid-template-columns: 1fr;
@@ -116,7 +131,9 @@ section {
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
 }
 
-/* Formulario educativo */
+/* ------------------------------------------------------------
+   FORMULARIO EDUCATIVO Y ADVERTENCIAS LEGALES
+   ------------------------------------------------------------ */
 .contacto-section {
     background-color: var(--color-surface);
     border-radius: var(--radius-lg);
@@ -148,13 +165,101 @@ section {
     gap: var(--space-sm);
 }
 
-.contact-form input, .contacto-section select {
+.contact-form legend {
+    padding: 0 var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.contact-form label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="number"],
+.contact-form select,
+.contact-form textarea {
     width: 100%;
     padding: var(--space-xs) var(--space-sm);
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     color: var(--color-text);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+}
+
+/* Cartel legal desplegable con detalles (advertencias en rojo/naranja) */
+.legal-hint {
+    margin: var(--space-sm) 0;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius);
+    background-color: rgba(245, 158, 11, 0.08);
+    overflow: hidden;
+}
+
+.legal-hint summary {
+    padding: var(--space-sm);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-accent);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.legal-hint summary::before {
+    content: "▶";
+    font-size: 0.75em;
+    transition: transform 0.25s ease;
+    display: inline-block;
+}
+
+.legal-hint[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.legal-hint-content {
+    padding: 0 var(--space-sm) var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.legal-hint-content ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-left: var(--space-md);
+    list-style: disc;
+    margin: var(--space-xs) 0;
+}
+
+.legal-hint-content li strong {
+    color: var(--color-secondary);
+}
+
+.legal-hint-footer {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-danger); /* Resalta la advertencia legal en rojo */
+    font-size: var(--font-size-sm);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
