@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- Header (Consistente con index.html) -->
+    <!-- Header (Sin botón de música) -->
     <header class="site-header">
         <a href="index.html" class="logo" aria-label="Ir al inicio de Game World">
             <img src="assets/favicon/favicon-32x32.png" alt="" class="logo-icon" width="32" height="32">
@@ -23,8 +23,6 @@
             </ul>
         </nav>
         <div class="auth-actions">
-            <!-- Botón de Música -->
-            <button id="btn-audio" class="btn btn-secondary" title="Activar/Silenciar Música">🎵 Música: OFF</button>
             <a href="panel.html" class="btn btn-secondary">Iniciar sesión</a>
             <a href="register.html" class="btn btn-primary">Registrate</a>
         </div>
@@ -34,10 +32,9 @@
         <header class="game-header">
             <h1>Caso Yahoo!: La Cronología de una Brecha</h1>
             <p>Avanzá por la línea de tiempo cumpliendo las acciones de cada hito para entender la caída de un gigante.</p>
-            <button id="btn-reset" class="btn btn-danger" style="margin-top: 10px;">🔄 Reiniciar Juego</button>
         </header>
 
-        <!-- Cápsula 3D de Línea de Tiempo (Justo debajo del header) -->
+        <!-- Cápsula 3D de Línea de Tiempo (Ancho completo) -->
         <div class="timeline-capsule-wrapper">
             <div class="timeline-capsule" id="timeline-capsule">
                 <div class="timeline-fill" id="timeline-fill"></div>
@@ -55,10 +52,10 @@
         <!-- HUD / Indicador de Año y Misión -->
         <div class="game-hud">
             <span class="year-badge">📅 AÑO: <span id="current-year">2010</span></span>
-            <span class="mission-title" id="mission-title">Hito: Adquisición de Associated Content</span>
+            <span class="mission-title" id="mission-title">Adquisición de Associated Content</span>
         </div>
 
-        <!-- Tablero de Juego (Izquierda vs Derecha - Globos 3D) -->
+        <!-- Tablero de Juego (Doble de alto) -->
         <section class="versus-stage" id="game-stage">
             <!-- Izquierda: Yahoo Bubble -->
             <div class="entity-bubble" id="yahoo-bubble">
@@ -86,11 +83,10 @@
             <p id="terminal-text">> [SISTEMA INICIALIZADO] Año 2010: Presioná "Comprar" para fusionar Associated Content con Yahoo y heredar sus vulnerabilidades...</p>
         </section>
 
-        <!-- Panel de explicación legal/técnica -->
-        <aside class="legal-feedback" id="legal-feedback">
-            <h3>⚖️ Impacto Legal y Regulatorio</h3>
-            <p id="feedback-text">Yahoo compra Associated Content por $100M (luego Yahoo Voices), arrastrando problemas de seguridad internos sin resolver.</p>
-        </aside>
+        <!-- Control de Música reubicado aquí -->
+        <div class="audio-control-container" style="text-align: center; margin-top: 15px;">
+            <button id="btn-audio" class="btn btn-secondary">🎵 Música: OFF</button>
+        </div>
     </main>
 
     <!-- Footer -->

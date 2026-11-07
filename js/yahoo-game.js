@@ -32,22 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentYearSpan = document.getElementById('current-year');
     const missionTitle = document.getElementById('mission-title');
     const terminalText = document.getElementById('terminal-text');
-    const feedbackText = document.getElementById('feedback-text');
     const gameStage = document.getElementById('game-stage');
     const timelineFill = document.getElementById('timeline-fill');
-    const btnReset = document.getElementById('btn-reset');
 
     function actualizarBarraProgreso(index) {
         const totalSteps = stepButtons.length;
         const porcentaje = (index / (totalSteps - 1)) * 100;
         timelineFill.style.width = `${Math.max(12, porcentaje)}%`;
     }
-
-    // Botón de Reseteo
-    btnReset.addEventListener('click', () => {
-        document.querySelector('[data-step="2010"]').click();
-        terminalText.innerHTML = "> [SISTEMA REINICIADO] Volviendo al año 2010...";
-    });
 
     // Navegación por la línea de tiempo
     stepButtons.forEach((button, index) => {
@@ -66,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function cargarHitoEscenario(year) {
         switch(year) {
             case '2010':
-                missionTitle.textContent = "Hito: Adquisición de Associated Content";
+                missionTitle.textContent = "Adquisición de Associated Content";
                 gameStage.innerHTML = `
                     <div class="entity-bubble" id="yahoo-bubble">
                         <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
@@ -80,18 +72,29 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Associated Content</p>
                     </div>
                 `;
-                terminalText.innerHTML = "> [2010] Yahoo adquiere Associated Content por $100M (Yahoo Voices).<br>> [ADVERTENCIA] Se heredan fallas de seguridad internas no resueltas[cite: 2, 3].";
-                feedbackText.innerHTML = "Yahoo adquiere Associated Content por $100M. Sin embargo, se heredaron graves problemas de seguridad que no fueron auditados ni resueltos[cite: 2, 3].";
+                terminalText.innerHTML = "> [2010] Yahoo adquiere Associated Content por $100M (Yahoo Voices)[cite: 2, 3].<br>> [ADVERTENCIA] Presioná 'Comprar' para fusionar las marcas.";
                 
                 document.getElementById('btn-comprar').addEventListener('click', () => {
-                    document.getElementById('stage-action-area').innerHTML = `<span style="color:#00ff66; font-weight:bold; font-size:1.1rem; text-align:center;">✅ FUSIONADOS<br><small>Yahoo Voices</small></span>`;
-                    terminalText.innerHTML = "> [ÉXITO] Compra completada. Yahoo y Associated Content integrados como Yahoo Voices.<br>> [ALERTA] Las vulnerabilidades latentes quedan expuestas[cite: 2, 3].";
-                    feedbackText.innerHTML = "¡Compra completada con éxito! Ambos logos se integran, pero las fallas técnicas internas quedan latentes en la infraestructura[cite: 2, 3].";
+                    // Ahora ambos logos quedan juntos del lado izquierdo (fusionados)
+                    gameStage.innerHTML = `
+                        <div style="display: flex; gap: 15px; align-items: center; justify-content: center; grid-column: span 3;">
+                            <div class="entity-bubble">
+                                <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
+                                <p>Yahoo!</p>
+                            </div>
+                            <span style="font-size: 2rem; color: #38bdf8; font-weight: bold;">+</span>
+                            <div class="entity-bubble">
+                                <div class="bubble-inner"><img src="assets/yahoo/associated-content.svg" alt="Associated Content"></div>
+                                <p>Yahoo Voices</p>
+                            </div>
+                        </div>
+                    `;
+                    terminalText.innerHTML = "> [ÉXITO] Compra completada. Associated Content integrado como Yahoo Voices bajo la estructura de Yahoo[cite: 2, 3].<br>> [ALERTA] Se heredaron fallas internas de seguridad no resueltas[cite: 2, 3].";
                 });
                 break;
 
             case '2012':
-                missionTitle.textContent = "Hito: 1er Ataque Documentado";
+                missionTitle.textContent = "1er Ataque Documentado";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
@@ -106,15 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 terminalText.innerHTML = "> [2012] Yahoo Voices sufre ataque por inyección SQL[cite: 2, 3].<br>> [CRÍTICO] 450.000 contraseñas expuestas en TEXTO PLANO[cite: 2, 3].";
-                feedbackText.innerHTML = "Se comprometen 450.000 cuentas porque las credenciales estaban almacenadas completamente sin cifrar. Este incidente no figuró en acuerdos legales posteriores[cite: 2, 3].";
                 
                 document.getElementById('btn-atacar-2012').addEventListener('click', () => {
-                    terminalText.innerHTML = "> [BRECHA CONFIRMADA] Extracción de 450.000 credenciales en texto plano[cite: 2, 3].<br>> [VIOLACIÓN] Incumplimiento grave del deber de seguridad (Art. 9 Ley 25.326)[cite: 2, 3].";
+                    terminalText.innerHTML = "> [BRECHA CONFIRMADA] Extracción de 450.000 credenciales sin cifrar[cite: 2, 3].<br>> [VIOLACIÓN] Incumplimiento grave del deber de seguridad (Art. 9 Ley 25.326)[cite: 2, 3].";
                 });
                 break;
 
             case '2013':
-                missionTitle.textContent = "Hito: Filtración Masiva (3 Mil Millones)";
+                missionTitle.textContent = "Filtración Masiva (3 Mil Millones)";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
@@ -128,12 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Hash MD5 (Débil)</p>
                     </div>
                 `;
-                terminalText.innerHTML = "> [2013] Sustracción masiva de información de más de mil millones de cuentas[cite: 2, 3].<br>> [TÉCNICO] Uso del algoritmo hash MD5 (considerado débil e inseguro)[cite: 2, 3].";
-                feedbackText.innerHTML = "La mayor brecha de la historia afectó a 3.000 millones de cuentas a nivel global (incluyendo casi 8 millones de argentinos). El uso de MD5 facilitó ataques de fuerza bruta[cite: 2, 3].";
+                terminalText.innerHTML = "> [2013] Sustracción masiva de información de más de mil millones de cuentas (3 mil millones totales)[cite: 2, 3].<br>> [TÉCNICO] Uso del algoritmo hash MD5, vulnerable a ataques de fuerza bruta[cite: 2, 3].";
                 break;
 
             case '2014':
-                missionTitle.textContent = "Hito: El Clic Fatal / Phishing";
+                missionTitle.textContent = "El Clic Fatal / Phishing";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
@@ -147,16 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Hackers FSB Ruso</p>
                     </div>
                 `;
-                terminalText.innerHTML = "> [2014] Campaña de phishing dirigida a un empleado de Yahoo[cite: 2, 3].<br>> [INTRUSIÓN] Acceso inicial a la red, UDB y herramienta AMT[cite: 2, 3].";
-                feedbackText.innerHTML = "Un solo clic en un correo fraudulento facilitó el acceso de Alexsey Belan y oficiales rusos, fabricando cookies de autenticación para suplantar 6.500 cuentas clave[cite: 2, 3].";
+                terminalText.innerHTML = "> [2014] Campaña de phishing dirigida a un empleado de Yahoo[cite: 2, 3].<br>> [INTRUSIÓN] Acceso a la UDB y fabricación de cookies falsas de autenticación[cite: 2, 3].";
                 
                 document.getElementById('btn-phishing').addEventListener('click', () => {
-                    terminalText.innerHTML = "> [ACCESO TOTAL] Credenciales corporativas comprometidas[cite: 2, 3].<br>> [OPERACIÓN] Los atacantes generan cookies falsas para acceder a cuentas de alto interés[cite: 2, 3].";
+                    terminalText.innerHTML = "> [ACCESO TOTAL] Credenciales corporativas comprometidas[cite: 2, 3].<br>> [OPERACIÓN] Suplantación de al menos 6.500 cuentas de alto interés[cite: 2, 3].";
                 });
                 break;
 
             case '2016':
-                missionTitle.textContent = "Hito: Venta a Verizon y Revelación";
+                missionTitle.textContent = "Venta a Verizon y Revelación";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
@@ -170,12 +170,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Verizon Communications</p>
                     </div>
                 `;
-                terminalText.innerHTML = "> [JULIO 2016] Verizon acuerda comprar el negocio operativo por $4.830 millones[cite: 2, 3].<br>> [SEPTIEMBRE 2016] Revelación pública de la brecha de 2013, 3 años después[cite: 2, 3].";
-                feedbackText.innerHTML = "La revelación tardía de la brecha desató un escándalo financiero y legal que impactó directamente en los términos de la adquisición[cite: 2, 3].";
+                terminalText.innerHTML = "> [JULIO 2016] Verizon acuerda comprar el negocio operativo por $4.830M[cite: 2, 3].<br>> [SEPTIEMBRE 2016] Revelación pública de la brecha de 2013, 3 años después[cite: 2, 3].";
                 break;
 
             case '2017':
-                missionTitle.textContent = "Hito: Renegociación y Altaba";
+                missionTitle.textContent = "Renegociación y Altaba";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner"><img src="assets/yahoo/yahoo-logo.svg" alt="Yahoo"></div>
@@ -189,8 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Verizon / Oath</p>
                     </div>
                 `;
-                terminalText.innerHTML = "> [2017] Verizon y Yahoo anuncian un descuento de $350M (Precio final: $4.480M)[cite: 2, 3].<br>> [NACIMIENTO] Lo restante de Yahoo se convierte en Altaba Inc[cite: 2, 3].";
-                feedbackText.innerHTML = "Las brechas de seguridad le costaron 350 millones de dólares menos a Verizon en la compra final. El resto de Yahoo pasó a llamarse Altaba Inc. para gestionar pasivos[cite: 2, 3].";
+                terminalText.innerHTML = "> [2017] Verizon rebaja la compra en $350M (Precio final: $4.480M)[cite: 2, 3].<br>> [NACIMIENTO] El resto de Yahoo pasa a llamarse Altaba Inc[cite: 2, 3].";
                 
                 document.getElementById('btn-descuento').addEventListener('click', () => {
                     terminalText.innerHTML = "> [RENEGOCIACIÓN EXITOSA] Precio final fijado en $4.480 millones[cite: 2, 3].<br>> [ESTRUCTURA] Cierre de venta y creación de Altaba Inc[cite: 2, 3].";
@@ -198,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
 
             case '2018':
-                missionTitle.textContent = "Hito: Sanción SEC y Demandas";
+                missionTitle.textContent = "Sanción SEC y Demandas";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner" style="border-color: #f59e0b;"><span style="font-size:2rem;">🏛️</span></div>
@@ -213,11 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 terminalText.innerHTML = "> [2018] La SEC sanciona a Altaba con $35M por ocultar ciberataques a inversores[cite: 2, 3].<br>> [ACUERDOS] $80M accionistas, $29M directores y $117.5M fondo para usuarios[cite: 2, 3].";
-                feedbackText.innerHTML = "Primera vez que la SEC multaba a una empresa por ocultar una brecha de seguridad. Se acumularon acuerdos civiles históricos por más de $150 millones[cite: 2, 3].";
                 break;
 
             case '2019':
-                missionTitle.textContent = "Hito: Sanción en Argentina (AAIP)";
+                missionTitle.textContent = "Sanción en Argentina (AAIP)";
                 gameStage.innerHTML = `
                     <div class="entity-bubble">
                         <div class="bubble-inner" style="border-color: #38bdf8;"><span style="font-size:2rem;">🇦🇷</span></div>
@@ -232,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 terminalText.innerHTML = "> [JUNIO 2019] AAIP sanciona a Yahoo! Argentina con $105.000 pesos[cite: 2, 3].<br>> [CAUSA] Cifrado deficiente en copias de seguridad (tar/gzip) y no informar baja[cite: 2, 3].";
-                feedbackText.innerHTML = "Marcó un precedente regulatorio clave en Argentina al sancionar el incumplimiento del Art. 9 de la Ley 25.326 sobre copias de seguridad y la omisión de baja registral[cite: 2, 3].";
                 break;
         }
     }
