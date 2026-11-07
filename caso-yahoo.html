@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game World | Caso Yahoo!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/yahoo-game.css">
+</head>
+<body>
+
+    <!-- Header (mantenés el de index.html) -->
+
+    <main class="yahoo-container">
+        <header class="game-header">
+            <h1>Caso Yahoo!: La Cronología de una Brecha</h1>
+            <p>Avanzá por la línea de tiempo cumpliendo las acciones de cada hito para entender la caída de un gigante.</p>
+        </header>
+
+        <!-- Barra de progreso / Línea de tiempo general -->
+        <nav class="timeline-nav">
+            <button class="step-btn active" data-step="1">2010</button>
+            <button class="step-btn" data-step="2">2012</button>
+            <button class="step-btn" data-step="3">2013</button>
+            <button class="step-btn" data-step="4">2014</button>
+            <button class="step-btn" data-step="5">2016</button>
+            <button class="step-btn" data-step="6">2017</button>
+            <button class="step-btn" data-step="7">2018</button>
+            <button class="step-btn" data-step="8">2019</button>
+        </nav>
+
+        <!-- Tablero del Juego -->
+        <section id="game-stage" class="game-stage">
+            
+            <!-- Hito 2010: Adquisición -->
+            <article class="stage-card active" id="stage-2010">
+                <h2>2010: Adquisición de Associated Content</h2>
+                <div class="canvas-area">
+                    <div class="entity" id="yahoo-logo">
+                        <img src="assets/yahoo/yahoo-logo.png" alt="Yahoo">
+                    </div>
+                    <div class="draggable-item" id="money-bill" draggable="true">
+                        💵 $100M USD
+                    </div>
+                    <div class="drop-zone" id="target-associated">
+                        <img src="assets/yahoo/associated-content.png" alt="Associated Content">
+                        <p>Arrastrá el dinero aquí para completar la compra</p>
+                    </div>
+                </div>
+                <div class="stage-info">
+                    <p>Yahoo compra Associated Content por $100M (luego Yahoo Voices), arrastrando problemas de seguridad internos sin resolver.</p>
+                </div>
+            </article>
+
+            <!-- Hito 2014: Phishing -->
+            <article class="stage-card" id="stage-2014" style="display:none;">
+                <h2>2014: El Clic Fatal</h2>
+                <div class="phishing-sim">
+                    <div class="email-box">
+                        <p><strong>De:</strong> soporte-falso@yahoo.com</p>
+                        <p><strong>Asunto:</strong> URGENTE: Actualizá tu credencial corporativa</p>
+                        <button id="btn-phishing" class="btn btn-danger">Hacer clic en el enlace</button>
+                    </div>
+                </div>
+                <div class="stage-info">
+                    <p>Un solo clic permitió la intrusión de hackers (Alexsey Belan y oficiales del FSB) a la base de datos UDB.</p>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Panel de explicación legal/técnica -->
+        <aside class="legal-feedback" id="legal-feedback">
+            <h3>⚖️ Impacto Legal y Regulatorio</h3>
+            <p id="feedback-text">Completá la acción del año 2010 para avanzar.</p>
+        </aside>
+    </main>
+
+    <!-- Footer (mantenés el de index.html) -->
+
+    <script src="js/yahoo-game.js"></script>
+</body>
+</html>
