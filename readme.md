@@ -2,11 +2,13 @@
 
 > Proyecto académico interactivo desarrollado en **HTML5, CSS3 modular y JavaScript vainilla**, enfocado en la concientización sobre la privacidad en Internet, la seguridad informática y las normativas de protección de datos personales (con especial foco en la **Ley 25.326 de Argentina**).
 
+[![Vercel Live Demo](https://img.shields.io/badge/Vercel-Sitio_En_Vivo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://gameworld-rouge.vercel.app/caso-yahoo.html)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 ---
 
 ## 👥 Equipo de Desarrollo y Colaboradores
 
-* **Docente a cargo:** *(Nombre del Profesor/a)*
+* **Docente a cargo:** *Hernán Cuñarro*
 * **Jimena Quenallata** – [@jimenaquenallata](https://github.com/jimenaquenallata)
 * **Damián Domínguez** – [@Damianmdominguez](https://github.com/Damianmdominguez)
 * **Germán Bisutti** – [@German-Bisutti](https://github.com/German-Bisutti)
@@ -27,60 +29,18 @@
 
 ## 📂 Estructura del Proyecto
 
+El proyecto está organizado de forma modular para facilitar el mantenimiento y el trabajo en equipo:
+
 ```text
-D:.
-|   caso-yahoo.html
-|   index.html
-|   panel.html
-|   register.html
-|   
-+---assets
-|   +---carousel
-|   |       slide-01.jpg
-|   |       slide-02.jpg
-|   |       slide-03.jpg
-|   +---favicon
-|   |       apple-touch-icon.png
-|   |       favicon-16x16.png
-|   |       favicon-32x32.png
-|   +---gato
-|   |   +---geisha
-|   |   |       frame_01.png ... frame_06.png
-|   |   \---ninja
-|   |           frame_01.png ... frame_06.png
-|   +---juego
-|   |       cat.svg
-|   |       fondo-juego.jpg
-|   +---ruleta
-|   |       ruleta.png
-|   +---screenshots
-|   |       screen-1.png
-|   |       screen-2.png
-|   \---yahoo
-|           associated-content.svg
-|           verizon.jpg
-|           yahoo-game.mp3
-|           yahoo-logo.svg
-|   
-+---components
-|       footer.html
-|       header.html
-|   
-+---css
-|       auth.css
-|       base.css
-|       components.css
-|       home.css
-|       panel.css
-|       variables.css
-|       yahoo-game.css
-|   
-\---js
-        include-components.js
-        main.js
-        panel.js
-        register.js
-        yahoo-game.js
+WebVsLaws/
+├── 📄 index.html              # Página principal (Home, carrusel y ruleta)
+├── 📄 caso-yahoo.html         # Cronología interactiva del caso Yahoo
+├── 📄 panel.html              # Panel de usuario local y minijuego
+├── 📄 register.html           # Formulario de registro simulado
+├── 📁 assets/                 # Recursos multimedia (imágenes, iconos, audios)
+├── 📁 components/             # Partes reutilizables (header.html y footer.html)
+├── 📁 css/                    # Hojas de estilo modulares por responsabilidades
+└── 📁 js/                     # Scripts de la aplicación y carga de componentes
 ```
 
 ---
@@ -89,7 +49,7 @@ D:.
 
 | Inicio (`index.html`) | Caso Yahoo! (`caso-yahoo.html`) |
 | :---: | :---: |
-| ![Inicio Game World](screenshoots/screen-1.png) | ![Caso Yahoo!](docs/screenshoot-2.png) |
+| ![Inicio Game World](assets/screenshoots/screen-1.png) | ![Caso Yahoo!](assets/screenshoots/screen-2.png) |
 	
 ## ⚖️ Marco Legal y Normativa Aplicada
 
@@ -108,7 +68,7 @@ El proyecto analiza y ejemplifica los artículos clave de la legislación vigent
     1. Clonar el repositorio:
     
     ```Bash
-    git clone [https://github.com/tu-usuario/WebVsLaws.git](https://github.com/tu-usuario/WebVsLaws.git)
+        git clone [https://github.com/tu-usuario/WebVsLaws.git](https://github.com/tu-usuario/WebVsLaws.git)
     ```
 
     2. Abrir la carpeta del proyecto en tu editor de código (como VS Code).
