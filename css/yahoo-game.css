@@ -273,3 +273,16 @@
     max-width: 85px;
     border-radius: 6px;
 }
+
+/* --- Ajuste para forzar que todos los botones quepan en Mobile --- */
+@media (max-width: 768px) {
+    .timeline-capsule {
+        padding: 4px 6px;
+    }
+
+    .timeline-capsule .step-btn {
+        padding: 5px 4px;        /* Reducimos margen interno al mínimo */
+        font-size: 0.75rem;       /* Fuente un poco más pequeña */
+        letter-spacing: -0.5px;
+    }
+}
