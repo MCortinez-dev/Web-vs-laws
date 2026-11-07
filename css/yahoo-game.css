@@ -1,3 +1,16 @@
+/* ============================================================
+   CONTENEDOR PRINCIPAL DEL CASO YAHOO
+   Le da un ancho máximo, centrado y márgenes para que no se pegue a los bordes
+   ============================================================ */
+.yahoo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
 /* --- Cápsula 3D de Línea de Tiempo (Ancho Completo) --- */
 .timeline-capsule-wrapper {
     margin: 20px 0;
