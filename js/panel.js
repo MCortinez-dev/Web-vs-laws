@@ -135,23 +135,61 @@ let intervaloCuentaAtras = null;
 let juegoActivo = false;
 
 // ------------------------------------------------------------
-// Crear el elemento "gato" dentro del área de juego
+// Crear el elemento "gato" usando el SVG cat.svg y sonido
 // ------------------------------------------------------------
 function crearGato() {
     const gato = document.createElement("button");
     gato.type = "button";
     gato.className = "juego-gato";
-    gato.textContent = "🐱";
     gato.setAttribute("aria-label", "Atrapar al gato");
+
+    // Inyectar el SVG cat.svg como imagen interna para respetar el tamaño
+    const imgGato = document.createElement("img");
+    imgGato.src = "assets/juego/cat.svg";
+    imgGato.alt = "Gato";
+    gato.appendChild(imgGato);
 
     gato.addEventListener("click", () => {
         if (!juegoActivo) return;
         puntos++;
         puntosEl.textContent = puntos;
+        reproducirMaullido(); // Efecto de sonido sintetizado al capturarlo
         moverGato();
     });
 
     return gato;
+}
+
+// ------------------------------------------------------------
+// Reproducir sonido sintetizado de maullido (Web Audio API)
+// ------------------------------------------------------------
+function reproducirMaullido() {
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "sine";
+        const now = ctx.currentTime;
+        // Curva de frecuencia para imitar un maullido breve
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(750, now + 0.12);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.35);
+
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.35);
+    } catch (e) {
+        console.log("Audio no soportado o bloqueado por políticas del navegador", e);
+    }
 }
 
 // ------------------------------------------------------------
@@ -161,7 +199,6 @@ function moverGato() {
     const gato = areaJuego.querySelector(".juego-gato");
     if (!gato) return;
 
-    // Coordenadas aleatorias en porcentaje, dejando margen
     const maxX = areaJuego.clientWidth - gato.offsetWidth;
     const maxY = areaJuego.clientHeight - gato.offsetHeight;
 
@@ -191,7 +228,7 @@ function iniciarJuego() {
     btnJugar.disabled = true;
     btnJugar.textContent = "Jugando...";
 
-    // Mover el gato cada 800ms (más rápido = más difícil)
+    // Mover el gato cada 800ms
     intervaloJuego = setInterval(moverGato, 800);
 
     // Cuenta atrás
